@@ -1,0 +1,8 @@
+.w-sm-75 {
+  width: 75%;
+}
+@include media-breakpoint-up(md) {
+  .w-md-50 {
+    width: 50%;
+  }
+}

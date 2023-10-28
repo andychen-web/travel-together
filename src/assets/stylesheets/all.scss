@@ -1,0 +1,11 @@
+@import "~bootstrap/scss/functions";
+@import "./utilities/_variables.scss"; // 客製variables
+@import "~bootstrap/scss/bootstrap";
+@import "node_modules/bootstrap/scss/mixins/breakpoints";
+@import "./base/_typography.scss";
+@import "./base/_base.scss";
+
+@import "./components/_carousel.scss";
+@import "./components/_card.scss";
+
+@import "./utilities/_size.scss";

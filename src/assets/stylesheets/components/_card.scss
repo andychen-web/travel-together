@@ -1,0 +1,14 @@
+.card {
+  height: 120px;
+}
+.activity-card-img {
+  width: 90px;
+}
+@include media-breakpoint-up(md) {
+  .card {
+    height: 160px;
+  }
+  .activity-card-img {
+    width: 160px;
+  }
+}
