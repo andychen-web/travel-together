@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import pointer from "../assets/images/icons/pointer-yellow.svg";
-import { MdSearch } from "react-icons/md";
 import Carousel from "../component/Home/Carousel.jsx";
-import { getScenicSpots } from "../api/api.jsx";
+import { getScenicSpots } from "../api/api";
 import Header from "../component/Home/Header";
 import ActivityList from "../component/Home/ActivityList";
-import { getAccessToken } from "../api/auth";
 import ScenicSpotList from "../component/Home/ScenicSpotList.jsx";
+import RestaurantList from "../component/RestaurantList";
+import Search from "../component/Search";
 
 const HomePage = () => {
   const [scenicSpots, setScenicSpots] = useState([]);
@@ -18,70 +18,33 @@ const HomePage = () => {
         setCarouselItems(data.slice(0, 6));
       })
       .catch((err) => console.log(err));
-    // getAccessToken().then((data) => console.log(data));
   }, []);
   return (
     <main className="container">
       <div className="p-5">
         <div className="row">
           <div className="col-md-8">
-            <p className="px-3 py-2">
+            <h1 className="d-none d-md-block">
               探索台灣之美
               <br />
               讓我們更親近這片土地
-            </p>
+            </h1>
+            <h4 className="py-1 d-block d-md-none">
+              探索台灣之美
+              <br />
+              讓我們更親近這片土地
+            </h4>
 
-            <span className="px-3 py-2">
-              <img src={pointer} alt="pointer" />
-              <span>台灣旅遊景點導覽 Taiwan Travel Guide</span>
-            </span>
-          </div>
-          <div className="col-md-4">
-            <div className="dropdown">
-              <button
-                className="btn btn-white w-100 border border-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                探索景點
-              </button>
-              <ul
-                className="dropdown-menu w-100"
-                aria-labelledby="dropdownMenuButton1"
-              >
-                <li className="border-bottom ">
-                  <a className="dropdown-item" href="/">
-                    探索景點
-                  </a>
-                </li>
-                <li className="border-bottom ">
-                  <a className="dropdown-item" href="/">
-                    節慶活動
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="/">
-                    品嘗美食
-                  </a>
-                </li>
-              </ul>
+            <div className=" pb-3">
+              <div>
+                <img src={pointer} alt="pointer" />
+                台灣旅遊景點導覽
+              </div>
+              <div className="ps-4">Taiwan Travel Guide</div>
             </div>
-
-            <input
-              type="text"
-              placeholder="你想去哪?請輸入關鍵字"
-              className="bg-light form-control border border-secondary mt-2"
-              id="keywordInput"
-            />
-
-            <button
-              type="button"
-              className="mt-2 w-100 btn text-white btn-primary"
-            >
-              <MdSearch size={24} /> 搜尋
-            </button>
+          </div>
+          <div className="col-md-4 col-10 ">
+            <Search />
           </div>
         </div>
       </div>
@@ -105,6 +68,7 @@ const HomePage = () => {
           link={"/restaurants"}
           linkType={"美食"}
         />
+        <RestaurantList />
       </div>
     </main>
   );

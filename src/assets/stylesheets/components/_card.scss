@@ -4,11 +4,20 @@
 .activity-card-img {
   width: 90px;
 }
+.card-img-general {
+  width: 100%;
+  max-height: 160px;
+  border-radius: 10px;
+}
+
 @include media-breakpoint-up(md) {
   .card {
     height: 160px;
   }
   .activity-card-img {
     width: 160px;
+  }
+  .card-img-general {
+    border-radius: 10px;
   }
 }

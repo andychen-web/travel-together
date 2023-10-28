@@ -18,15 +18,15 @@ const Navigation = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse " id="navbarNavAltMarkup">
+        <div className="collapse navbar-collapse w-100" id="navbarNavAltMarkup">
           <div className="navbar-nav ms-auto">
-            <a className="nav-link" aria-current="page" href="/">
+            <a className="nav-link" href="/scenic-spots">
               探索景點
             </a>
-            <a className="nav-link" href="/festival">
+            <a className="nav-link" href="/activities">
               節慶活動
             </a>
-            <a className="nav-link" href="/restaurant">
+            <a className="nav-link" href="/restaurants">
               品嚐美食
             </a>
           </div>

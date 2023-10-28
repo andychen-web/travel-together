@@ -28,12 +28,6 @@ const Carousel = ({ items }) => {
             <h3 className="text-white fw-bold position-absolute">
               {item.City + "|" + item.ScenicSpotName}
             </h3>
-            {/* <img
-              src={item.Picture.PictureUrl1}
-              width={"100%"}
-              height={"100%"}
-              alt={items.ScenicSpotName}
-            /> */}
           </div>
         </SwiperSlide>
       ))}

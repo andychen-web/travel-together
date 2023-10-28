@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import MyBreadcrumb from "../component/MyBreadCrumb.jsx";
 
 const FestivalPage = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <main className="container">
+      <MyBreadcrumb />
+    </main>
+  );
+};
 
-export default FestivalPage
+export default FestivalPage;

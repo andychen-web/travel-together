@@ -15,7 +15,7 @@ const ActivityCard = ({ activity }) => {
       {/* card detail */}
       <div className="card-body d-flex flex-column justify-content-between py-1">
         <div>
-          <div className="text-secondary d-md-flex">
+          <div className="text-secondary d-lg-flex">
             <div>{activity.StartTime.slice(0, 10)}</div>
             <div>-{activity.EndTime.slice(0, 10)}</div>
           </div>
@@ -25,7 +25,7 @@ const ActivityCard = ({ activity }) => {
           <span>
             <img src={pointerGrey} alt="pointer" /> {activity.City}
           </span>
-          <a href="/" className="d-none d-md-block">
+          <a href="/" className="d-none d-lg-block">
             詳細介紹
             <img src={arrowPrimary} alt="arrow" />
           </a>
