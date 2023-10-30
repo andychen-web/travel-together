@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { getScenicSpots } from "../api/api";
-import MyBreadCrumb from "../component/MyBreadCrumb.jsx";
-import Search from "../component/Search.jsx";
-import { CITIES } from "../utilities/const";
+import { getScenicSpots } from "../../api/api";
+import MyBreadCrumb from "../../components/MyBreadCrumb.jsx";
+import Search from "../../components/Search.jsx";
+import { CITIES } from "../../utilities/const";
+import CategoryList from "../../components/CategoryList.jsx";
 const ScenicSpotPage = () => {
   const [city, setCity] = useState("");
   const [scenicSpots, setScenicSpots] = useState([]);
@@ -19,7 +20,7 @@ const ScenicSpotPage = () => {
     <main className="container">
       <MyBreadCrumb />
       <Search cities={CITIES} />
-      
+      <CategoryList />
     </main>
   );
 };

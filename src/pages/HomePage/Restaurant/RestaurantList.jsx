@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getRestaurants } from "../api/api";
-import Card from "./Card.jsx";
+import { getRestaurants } from "../../../api/api";
+import Card from "../../../components/Card.jsx";
 const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState([]);
   useEffect(() => {

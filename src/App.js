@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./assets/stylesheets/all.scss";
-import Navigation from "./component/Navigation";
-import ActivityPage from "./pages/ActivityPage";
-import HomePage from "./pages/HomePage";
-import RestaurantPage from "./pages/RestaurantPage";
-import ScenicSpotPage from "./pages/ScenicSpotPage.jsx";
+import Navigation from "./components/Navigation.jsx";
+import ActivityPage from "./pages/ActivityPage/ActivityPage";
+import HomePage from "./pages/HomePage/HomePage";
+import RestaurantPage from "./pages/RestaurantPage/RestaurantPage.jsx";
+import ScenicSpotPage from "./pages/ScenicSpotPage/ScenicSpotPage.jsx";
 import { getAccessToken } from "./api/auth.js";
 import Cookies from "universal-cookie";
 function App() {

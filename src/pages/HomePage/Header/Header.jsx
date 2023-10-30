@@ -1,5 +1,5 @@
 import React from "react";
-import Arrow from "../../assets/images/icons/arrow-right-orange.svg";
+import Arrow from "../../../assets/images/icons/arrow-right-orange.svg";
 const Header = ({ title, link, linkType }) => {
   return (
     <div className="d-flex align-items-center justify-content-between">

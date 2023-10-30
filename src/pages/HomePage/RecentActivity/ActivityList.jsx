@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getActivity } from "../../api/api";
+import { getActivity } from "../../../api/api";
 import ActivityCard from "./ActivityCard";
 const ActivityList = () => {
   const [activities, setActivities] = useState([]);

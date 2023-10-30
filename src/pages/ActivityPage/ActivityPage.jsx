@@ -1,5 +1,5 @@
 import React from "react";
-import MyBreadcrumb from "../component/MyBreadCrumb.jsx";
+import MyBreadcrumb from "../../components/MyBreadCrumb.jsx";
 
 const FestivalPage = () => {
   return (

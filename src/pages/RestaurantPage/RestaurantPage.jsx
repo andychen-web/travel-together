@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import MyBreadCrumb from "../component/MyBreadCrumb.jsx";
-import { getRestaurants } from "../api/api";
+import MyBreadCrumb from "../../components/MyBreadCrumb.jsx";
+import { getRestaurants } from "../../api/api.js";
 const Restaurant = () => {
   const [restaurants, setRestaurants] = useState([]);
   useEffect(() => {

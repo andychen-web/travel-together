@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import pointer from "../assets/images/icons/pointer-yellow.svg";
-import Carousel from "../component/Home/Carousel.jsx";
-import { getScenicSpots } from "../api/api";
-import Header from "../component/Home/Header";
-import ActivityList from "../component/Home/ActivityList";
-import ScenicSpotList from "../component/Home/ScenicSpotList.jsx";
-import RestaurantList from "../component/RestaurantList";
-import Search from "../component/Search";
+import pointer from "../../assets/images/icons/pointer-yellow.svg";
+import Carousel from "./Carousel/Carousel.jsx";
+import { getScenicSpots } from "../../api/api";
+import Header from "./Header/Header.jsx";
+import ActivityList from "./RecentActivity/ActivityList.jsx";
+import ScenicSpotList from "./ScenicSpot/ScenicSpotList.jsx";
+import RestaurantList from "./Restaurant/RestaurantList.jsx";
+import Search from "../../components/Search.jsx";
 
 const HomePage = () => {
   const [scenicSpots, setScenicSpots] = useState([]);

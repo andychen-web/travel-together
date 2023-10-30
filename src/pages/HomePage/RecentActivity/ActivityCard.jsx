@@ -1,6 +1,6 @@
 import React from "react";
-import pointerGrey from "../../assets/images/icons/pointer-grey.svg";
-import arrowPrimary from "../../assets/images/icons/arrow-right-primary.svg";
+import pointerGrey from "../../../assets/images/icons/pointer-grey.svg";
+import arrowPrimary from "../../../assets/images/icons/arrow-right-primary.svg";
 const ActivityCard = ({ activity }) => {
   return (
     <div className="card d-flex flex-row mb-2">
