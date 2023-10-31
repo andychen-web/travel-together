@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "../assets/images/icons/Logo-desktop.svg";
+import { routes } from "../utilities/routes";
 const Navigation = () => {
   return (
     <nav className="navbar navbar-expand-sm container">
@@ -20,15 +21,11 @@ const Navigation = () => {
         </button>
         <div className="collapse navbar-collapse w-100" id="navbarNavAltMarkup">
           <div className="navbar-nav ms-auto">
-            <a className="nav-link" href="/ScenicSpot">
-              探索景點
-            </a>
-            <a className="nav-link" href="/Activity">
-              節慶活動
-            </a>
-            <a className="nav-link" href="/Restaurant">
-              品嚐美食
-            </a>
+            {routes.map((route, index) => (
+              <a key={index} className="nav-link" href={route.path}>
+                {route.name}
+              </a>
+            ))}
           </div>
         </div>
       </div>
