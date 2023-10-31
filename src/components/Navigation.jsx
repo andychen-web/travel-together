@@ -20,13 +20,13 @@ const Navigation = () => {
         </button>
         <div className="collapse navbar-collapse w-100" id="navbarNavAltMarkup">
           <div className="navbar-nav ms-auto">
-            <a className="nav-link" href="/scenic-spots">
+            <a className="nav-link" href="/ScenicSpot">
               探索景點
             </a>
-            <a className="nav-link" href="/activities">
+            <a className="nav-link" href="/Activity">
               節慶活動
             </a>
-            <a className="nav-link" href="/restaurants">
+            <a className="nav-link" href="/Restaurant">
               品嚐美食
             </a>
           </div>

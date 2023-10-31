@@ -20,13 +20,13 @@ function App() {
 
   return (
     <Router>
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/scenic-spots" element={<ScenicSpotPage />} />
-        <Route path="/activities" element={<ActivityPage />} />
-        <Route path="/restaurants" element={<RestaurantPage />} />
-      </Routes>
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/ScenicSpot" element={<ScenicSpotPage />} />
+          <Route path="/Activity" element={<ActivityPage />} />
+          <Route path="/Restaurant" element={<RestaurantPage />} />
+        </Routes>
     </Router>
   );
 }

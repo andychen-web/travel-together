@@ -1,4 +1,5 @@
 export const CITIES = [
+  { value: "", label: "請選擇城市" },
   { value: "Taipei", label: "臺北市" },
   { value: "NewTaipei", label: "新北市" },
   { value: "Taoyuan", label: "桃園市" },
@@ -21,6 +22,5 @@ export const CITIES = [
   { value: "KinmenCounty", label: "金門縣" },
   { value: "PenghuCounty", label: "澎湖縣" },
   { value: "LienchiangCounty", label: "連江縣" },
-] 
-// ?
+];
 // ? export const DATE_FORMAT = "YYYY-MM-DD";
