@@ -7,13 +7,14 @@ import topic4 from "../../assets/images/category/spot/04.svg";
 import topic5 from "../../assets/images/category/spot/05.svg";
 import topic6 from "../../assets/images/category/spot/06.svg";
 import topic7 from "../../assets/images/category/spot/07.svg";
-import noSearchResult from "../../assets/images/icons/no-search-result.svg";
 
 import CategoryList from "../../components/Category/CategoryList.jsx";
 import MyBreadCrumb from "../../components/MyBreadCrumb.jsx";
-import Search from "../../components/Search.jsx";
+import Search from "../../components/Search/Search.jsx";
 import useQueryParams from "../../hooks/useQueryParams";
 import ScenicSpotList from "../HomePage/ScenicSpot/ScenicSpotList.jsx";
+import NoSearchResult from "../../components/Search/NoSearchResult";
+import SearchResultTitle from "../../components/Search/SearchResultTitle";
 const ScenicSpotPage = () => {
   const TOPICS = [
     { bg: topic1, label: "自然風景類" },
@@ -37,14 +38,15 @@ const ScenicSpotPage = () => {
   } = useQueryParams();
 
   useEffect(() => {
-    // search by city and keyword
-    if (searchInput !== "none") {
+    // search by city or keyword
+    if (searchInput || city) {
       getScenicSpots({ city, searchInput })
         .then((data) => {
           setScenicSpots(data);
         })
         .catch((err) => console.log(err));
-    } else {
+    } else if (city) {
+      // search by city only
       getScenicSpots({ city })
         .then((data) => {
           setScenicSpots(data);
@@ -75,20 +77,11 @@ const ScenicSpotPage = () => {
       />
       <CategoryList topics={TOPICS} />
       <div className="search-result">
-        <div className="d-flex">
-          <h1> 搜尋結果</h1>
-          <div className="mt-3 ms-3">
-            共有<span className="text-info">{scenicSpots.length}</span>筆
-          </div>
-        </div>
+        <SearchResultTitle length={scenicSpots.length} />
         {scenicSpots.length ? (
           <ScenicSpotList spots={scenicSpots} />
         ) : (
-          <div className="text-primary h-3 fw-bold w-25 m-auto my-5">
-            <img src={noSearchResult} alt="no-result" />
-            <div>目前查無資料</div>
-            <div>請重新搜尋</div>
-          </div>
+          <NoSearchResult />
         )}
       </div>
     </main>

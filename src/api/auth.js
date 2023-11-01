@@ -1,5 +1,3 @@
-// official https://github.com/tdxmotc/SampleCode
-// old way https://github.com/TSinChen/2021thef2e-week1-2/blob/master/src/api/axios.ts#L15
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { jwtDecode } from "jwt-decode";

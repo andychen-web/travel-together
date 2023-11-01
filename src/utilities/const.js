@@ -23,4 +23,3 @@ export const CITIES = [
   { value: "PenghuCounty", label: "澎湖縣" },
   { value: "LienchiangCounty", label: "連江縣" },
 ];
-// ? export const DATE_FORMAT = "YYYY-MM-DD";

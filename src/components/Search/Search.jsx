@@ -1,15 +1,18 @@
 import React from "react";
 import { MdSearch } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { CITIES } from "../../utilities/const";
 
 const Search = ({
   city,
-  cities,
   setCity,
   setSearchInput,
   placeholder,
   searchInput,
   pathname,
+  // props unique to activity page
+  date,
+  setDate,
 }) => {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -22,6 +25,10 @@ const Search = ({
         }`
       );
   };
+  const today = new Intl.DateTimeFormat("en-CA").format(new Date());
+  let newDate = new Date();
+  newDate.setFullYear(newDate.getFullYear() + 1);
+  const oneYearFromNow = new Intl.DateTimeFormat("en-CA").format(newDate);
   return (
     <form
       autoComplete="on"
@@ -34,17 +41,32 @@ const Search = ({
         value={city}
         onChange={(e) => setCity(e.target.value)}
       >
-        {cities.map((city, index) => (
+        {CITIES.map((city, index) => (
           <option key={index} value={city.value}>
             {city.label}
           </option>
         ))}
       </select>
+      {setDate ? (
+        <>
+          <label htmlFor="datePicker" className="d-none"></label>
+          <input
+            type="date"
+            value={date ? date : today}
+            min={today}
+            max={oneYearFromNow}
+            onChange={(e) => setDate(e.target.value)}
+            className="mx-2 px-2 w-50 border border-secondary rounded"
+            id="datePicker"
+          />
+        </>
+      ) : null}
+
       <label htmlFor="keywordInput" className="d-none"></label>
       <input
         type="text"
         placeholder={`${placeholder}輸入關鍵字`}
-        className="mx-2 bg-light form-control border border-secondary"
+        className="mx-2 w-75 bg-light form-control border border-secondary"
         id="keywordInput"
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
