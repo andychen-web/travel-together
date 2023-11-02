@@ -5,9 +5,8 @@ const MyBreadcrumb = ({ routes }) => {
       <Breadcrumb.Item href="/">首頁</Breadcrumb.Item>
       {routes.map((route, index) => (
         <Breadcrumb.Item
-          active={index === routes.length - 1 ? "true" : ""}
+          active
           key={index}
-          href={route}
         >
           {route}
         </Breadcrumb.Item>
