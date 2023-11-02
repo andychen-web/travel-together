@@ -57,7 +57,7 @@ const Restaurant = () => {
   }, [query]);
   return (
     <main className="container">
-      <MyBreadCrumb />
+      <MyBreadCrumb routes={["品嚐美食"]} />
       <Search
         city={city}
         setCity={setCity}

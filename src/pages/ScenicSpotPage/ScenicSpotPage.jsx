@@ -59,7 +59,7 @@ const ScenicSpotPage = () => {
   }, [query]);
   return (
     <main className="container">
-      <MyBreadCrumb />
+      <MyBreadCrumb routes={[ "探索景點"]} />
       <Search
         city={city}
         setCity={setCity}

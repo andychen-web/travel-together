@@ -1,17 +1,15 @@
 import Breadcrumb from "react-bootstrap/Breadcrumb";
-import { useLocation } from "react-router-dom";
-import { routes } from "../utilities/routes";
-const MyBreadcrumb = () => {
-  const location = useLocation();
-  const matchingRouteList = routes.filter(
-    (route) => route.path === location.pathname
-  );
+const MyBreadcrumb = ({ routes }) => {
   return (
     <Breadcrumb>
       <Breadcrumb.Item href="/">首頁</Breadcrumb.Item>
-      {matchingRouteList.map((route, index) => (
-        <Breadcrumb.Item key={index} active href={route.path}>
-          {route.name}
+      {routes.map((route, index) => (
+        <Breadcrumb.Item
+          active={index === routes.length - 1 ? "true" : ""}
+          key={index}
+          href={route}
+        >
+          {route}
         </Breadcrumb.Item>
       ))}
     </Breadcrumb>

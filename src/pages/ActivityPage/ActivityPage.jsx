@@ -61,7 +61,7 @@ const FestivalPage = () => {
   }, [query]);
   return (
     <main className="container">
-      <MyBreadCrumb />
+      <MyBreadCrumb routes={["節慶活動"]} />
       <Search
         city={city}
         setCity={setCity}
