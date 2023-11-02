@@ -8,6 +8,8 @@ import RestaurantPage from "./pages/RestaurantPage/RestaurantPage.jsx";
 import ScenicSpotPage from "./pages/ScenicSpotPage/ScenicSpotPage.jsx";
 import { getAccessToken } from "./api/auth.js";
 import Cookies from "universal-cookie";
+import OverviewDetailsPage from "./pages/OverviewDetailsPage/OverviewDetailsPage.jsx";
+import Footer from "./components/Footer";
 function App() {
   const cookies = new Cookies();
   const token = cookies.get("token");
@@ -20,13 +22,18 @@ function App() {
 
   return (
     <Router>
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/ScenicSpot" element={<ScenicSpotPage />} />
-          <Route path="/Activity" element={<ActivityPage />} />
-          <Route path="/Restaurant" element={<RestaurantPage />} />
-        </Routes>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<HomePage />} />
+        <Route path="/ScenicSpot" element={<ScenicSpotPage />} />
+        <Route path="/ScenicSpot/:id" element={<OverviewDetailsPage />} />
+        <Route path="/Activity" element={<ActivityPage />} />
+        <Route path="/Activity/:id" element={<OverviewDetailsPage />} />
+        <Route path="/Restaurant" element={<RestaurantPage />} />
+        <Route path="/Restaurant/:id" element={<OverviewDetailsPage />} />
+      </Routes>
+      <Footer />
     </Router>
   );
 }
