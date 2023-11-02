@@ -10,7 +10,7 @@ const HomePageSearch = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     navigate(
-      `${searchRoute}?searchInput=${homeSearchInput ? homeSearchInput : "none"}`
+      `${searchRoute}?searchInput=${homeSearchInput ? homeSearchInput : ""}`
     );
   };
   return (

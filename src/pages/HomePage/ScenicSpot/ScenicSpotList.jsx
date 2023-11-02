@@ -6,10 +6,11 @@ const ScenicSpotList = ({ spots }) => {
       {spots.map((item, index) => (
         <li key={index} className="col-md-3 col-6">
           <Card
+            item={item}
             id={item.ScenicSpotID}
             city={item.City}
             name={item.ScenicSpotName}
-            type={"scenic-spots"}
+            category={"ScenicSpot"}
             img={item.Picture.PictureUrl1}
           />
         </li>

@@ -45,13 +45,6 @@ const ScenicSpotPage = () => {
           setScenicSpots(data);
         })
         .catch((err) => console.log(err));
-    } else if (city) {
-      // search by city only
-      getScenicSpots({ city })
-        .then((data) => {
-          setScenicSpots(data);
-        })
-        .catch((err) => console.log(err));
     }
     // search by category
     if (category) {
@@ -77,8 +70,8 @@ const ScenicSpotPage = () => {
       />
       <CategoryList topics={TOPICS} />
       <div className="search-result">
-        <SearchResultTitle length={scenicSpots.length} />
-        {scenicSpots.length ? (
+        <SearchResultTitle length={scenicSpots?.length} />
+        {scenicSpots?.length ? (
           <ScenicSpotList spots={scenicSpots} />
         ) : (
           <NoSearchResult />
