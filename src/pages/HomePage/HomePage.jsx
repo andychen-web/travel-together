@@ -11,7 +11,7 @@ const HomePage = () => {
   const [scenicSpots, setScenicSpots] = useState([]);
   const [carouselItems, setCarouselItems] = useState([]);
   useEffect(() => {
-    getScenicSpots({ city: "Taipei" })
+    getScenicSpots({})
       .then((data) => {
         setScenicSpots(data.slice(6, 10));
         setCarouselItems(data.slice(0, 6));

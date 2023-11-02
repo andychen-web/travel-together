@@ -16,13 +16,13 @@ const Search = ({
 }) => {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
+    const dateParam = date ? `&date=${date}` : "";
     e.preventDefault();
-
-    (city || searchInput) &&
+    (city || searchInput || date) &&
       navigate(
-        `${pathname}?searchInput=${searchInput ? searchInput : "none"}&city=${
-          city ? city : "none"
-        }`
+        `${pathname}?searchInput=${searchInput ? searchInput : ""}&city=${
+          city ? city : ""
+        }${dateParam ? dateParam : ""}`
       );
   };
   const today = new Intl.DateTimeFormat("en-CA").format(new Date());
@@ -33,12 +33,12 @@ const Search = ({
     <form
       autoComplete="on"
       onSubmit={(e) => handleSubmit(e)}
-      className="d-flex"
+      className="d-flex mb-3"
     >
       <select
         className="form-select h-100 w-50 form-select-md border border-secondary"
         aria-label="form-select"
-        value={city}
+        value={city || ""}
         onChange={(e) => setCity(e.target.value)}
       >
         {CITIES.map((city, index) => (
@@ -52,7 +52,7 @@ const Search = ({
           <label htmlFor="datePicker" className="d-none"></label>
           <input
             type="date"
-            value={date ? date : today}
+            value={date ? date : ''}
             min={today}
             max={oneYearFromNow}
             onChange={(e) => setDate(e.target.value)}
@@ -60,7 +60,9 @@ const Search = ({
             id="datePicker"
           />
         </>
-      ) : null}
+      ) : (
+        <></>
+      )}
 
       <label htmlFor="keywordInput" className="d-none"></label>
       <input
@@ -68,7 +70,7 @@ const Search = ({
         placeholder={`${placeholder}輸入關鍵字`}
         className="mx-2 w-75 bg-light form-control border border-secondary"
         id="keywordInput"
-        value={searchInput}
+        value={searchInput || ""}
         onChange={(e) => setSearchInput(e.target.value)}
       />
 

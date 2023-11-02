@@ -9,14 +9,14 @@ const useQueryParams = () => {
     const query = qs.parse(location.search);
     const category = query.category;
     const pathname = location.pathname;
-
     return { query, pathname, category };
   }, [location.search]);
-  const [city, setCity] = useState(query.city);
+  const [city, setCity] = useState(query.city ? query.city : "");
   const [searchInput, setSearchInput] = useState(
-    query.searchInput === "none" ? "" : query.searchInput
+    query.searchInput ? query.searchInput : ""
   );
-
+  const [date, setDate] = useState(query.date ? query.date : '');
+  // !warning
   return {
     query,
     pathname,
@@ -25,6 +25,8 @@ const useQueryParams = () => {
     setCity,
     searchInput,
     setSearchInput,
+    date,
+    setDate,
   };
 };
 
