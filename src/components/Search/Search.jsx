@@ -33,10 +33,10 @@ const Search = ({
     <form
       autoComplete="on"
       onSubmit={(e) => handleSubmit(e)}
-      className="d-flex mb-3"
+      className="d-flex mb-3 flex-wrap flex-md-nowrap"
     >
       <select
-        className="form-select h-100 w-50 form-select-md border border-secondary"
+        className="form-select me-1 py-2 h-100 w-50 form-select-md border border-secondary"
         aria-label="form-select"
         value={city || ""}
         onChange={(e) => setCity(e.target.value)}
@@ -52,11 +52,11 @@ const Search = ({
           <label htmlFor="datePicker" className="d-none"></label>
           <input
             type="date"
-            value={date ? date : ''}
+            value={date ? date : ""}
             min={today}
             max={oneYearFromNow}
             onChange={(e) => setDate(e.target.value)}
-            className="mx-2 px-2 w-50 border border-secondary rounded"
+            className="mx-md-2 mt-2 mt-md-0 p-2 w-md-50 w-50 border border-secondary rounded"
             id="datePicker"
           />
         </>
@@ -67,14 +67,17 @@ const Search = ({
       <label htmlFor="keywordInput" className="d-none"></label>
       <input
         type="text"
-        placeholder={`${placeholder}輸入關鍵字`}
-        className="mx-2 w-75 bg-light form-control border border-secondary"
+        placeholder={`${placeholder}`}
+        className="mx-md-2 me-1 my-2 my-md-0 w-md-75 w-50 bg-light form-control border border-secondary"
         id="keywordInput"
         value={searchInput || ""}
         onChange={(e) => setSearchInput(e.target.value)}
       />
 
-      <button type="submit" className="w-50 h-100 btn text-white btn-primary">
+      <button
+        type="submit"
+        className="w-md-50 w-50 h-100 btn text-white btn-primary"
+      >
         <MdSearch size={24} /> 搜尋
       </button>
     </form>
