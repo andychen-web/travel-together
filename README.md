@@ -12,12 +12,13 @@
     │
     ├─api                          # API 相關，使用 Axios
     │
+    ├─assets                       # 圖片素材、stylesheets
+    │
+    ├─components                   # 可重用的元件
+    │
+    ├─hooks                        # 自定義hooks
+    │
     ├─pages                        # 各頁面
     │
-    ├─images
-    │
-    ├─styles                       # 預設樣式
-    │
-    │
-    └─utils                        # 常用 consants、functions
+    └─utilities                    # 可重用的 consants、functions
 ```
