@@ -4,10 +4,7 @@ const MyBreadcrumb = ({ routes }) => {
     <Breadcrumb>
       <Breadcrumb.Item href="/">首頁</Breadcrumb.Item>
       {routes.map((route, index) => (
-        <Breadcrumb.Item
-          active
-          key={index}
-        >
+        <Breadcrumb.Item active key={index}>
           {route}
         </Breadcrumb.Item>
       ))}

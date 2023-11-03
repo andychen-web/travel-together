@@ -6,10 +6,11 @@ const RestaurantList = ({ restaurants }) => {
       {restaurants?.map((item, index) => (
         <li key={index} className="col-md-3 col-6">
           <Card
+            item={item}
             id={item.RestaurantID}
             city={item.City}
             name={item.RestaurantName}
-            category={"restaurant"}
+            category={"Restaurant"}
             img={item.Picture.PictureUrl1}
           />
         </li>

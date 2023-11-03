@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Carousel from "./Carousel/Carousel.jsx";
 import { getScenicSpots } from "../../api/apis";
+import { getRestaurants } from "../../api/apis";
 import Header from "./Header/Header.jsx";
 import ActivityList from "./RecentActivity/ActivityList.jsx";
 import ScenicSpotList from "./ScenicSpot/ScenicSpotList.jsx";
@@ -10,7 +11,18 @@ import SearchTitle from "./SearchTitle/SearchTitle.jsx";
 const HomePage = () => {
   const [scenicSpots, setScenicSpots] = useState([]);
   const [carouselItems, setCarouselItems] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
   useEffect(() => {
+    getRestaurants({})
+      .then((data) => {
+        // randomly choose 4 times
+        const shownRestaurants = data
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 4);
+        setRestaurants(shownRestaurants);
+      })
+      .catch((err) => console.log(err));
+
     getScenicSpots({})
       .then((data) => {
         setScenicSpots(data.slice(6, 10));
@@ -27,7 +39,7 @@ const HomePage = () => {
       <Header title={"熱門打卡景點"} link={"/ScenicSpot"} linkType={"景點"} />
       <ScenicSpotList spots={scenicSpots} />
       <Header title={"一再回訪美食"} link={"/Restaurant"} linkType={"美食"} />
-      <RestaurantList />
+      <RestaurantList restaurants={restaurants} />
     </main>
   );
 };

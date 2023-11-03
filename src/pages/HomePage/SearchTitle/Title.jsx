@@ -11,11 +11,11 @@ const Title = () => {
         讓我們更親近這片土地
       </h1>
       {/* sm screen */}
-      <h4 className="py-1 d-block d-md-none">
+      <h5 className="py-1  d-block d-md-none">
         探索台灣之美
         <br />
         讓我們更親近這片土地
-      </h4>
+      </h5>
 
       <div className=" pb-3">
         <div>

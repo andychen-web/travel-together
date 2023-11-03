@@ -16,8 +16,6 @@ const Card = ({ item, id, city, name, category, img }) => {
   }
   const navigate = useNavigate();
   const handleCardClick = () => {
-    console.log(id, JSON.stringify(item));
-    localStorage.setItem(id, JSON.stringify(item));
     navigate(`/${category}/${id}`);
   };
   return (

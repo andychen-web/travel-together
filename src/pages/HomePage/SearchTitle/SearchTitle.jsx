@@ -8,7 +8,7 @@ const SearchTitle = () => {
       <div className="col-md-8">
         <Title />
       </div>
-      <div className="col-md-4 col-10 ">
+      <div className="col-md-4 ">
         <HomePageSearch />
       </div>
     </div>
