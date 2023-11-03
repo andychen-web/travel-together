@@ -7,9 +7,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 const Carousel = ({ items, overviewPictures }) => {
   const [pictures, setPictures] = useState([]);
   const newArr = [];
+  // overviews page
   useEffect(() => {
-    const imageFormats = [".jpg", ".png", ".gif"];
     for (const key in overviewPictures) {
+      const imageFormats = [".jpg", ".png", ".gif", ".JPG"];
       if (
         imageFormats.some((format) => overviewPictures[key].endsWith(format))
       ) {
@@ -29,6 +30,7 @@ const Carousel = ({ items, overviewPictures }) => {
       modules={[Autoplay, Pagination, Navigation]}
       autoHeight={true}
     >
+      {/* homepage */}
       {items?.map((item, index) => (
         <SwiperSlide key={index}>
           <div
@@ -38,15 +40,15 @@ const Carousel = ({ items, overviewPictures }) => {
             }}
             className="bg-img d-flex justify-content-center align-items-center"
           >
-            <h3 className="text-white fw-bold position-absolute">
+            <h3 className="text-shadow text-white fw-bold position-absolute">
               {item.City + "|" + item.ScenicSpotName}
             </h3>
           </div>
         </SwiperSlide>
       ))}
       {/* overview page only */}
-      {pictures?.map((pic, index) => {
-        return (
+      {pictures.length > 0 ? (
+        pictures.map((pic, index) => (
           <SwiperSlide key={index}>
             <div
               style={{
@@ -56,8 +58,10 @@ const Carousel = ({ items, overviewPictures }) => {
               className="w-100 bg-img d-flex justify-content-center align-items-center"
             ></div>
           </SwiperSlide>
-        );
-      })}
+        ))
+      ) : (
+        <></>
+      )}
     </Swiper>
   );
 };

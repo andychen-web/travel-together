@@ -1,9 +1,14 @@
 import React from "react";
 import pointerGrey from "../../../assets/images/icons/pointer-grey.svg";
 import arrowPrimary from "../../../assets/images/icons/arrow-right-primary.svg";
+import { useNavigate } from "react-router-dom";
 const ActivityCard = ({ activity }) => {
+  const navigate = useNavigate();
   return (
-    <div className="card d-flex flex-row mb-2">
+    <div
+      className="card d-flex flex-row mb-2 cursor-pointer"
+      onClick={() => navigate(`/Activity/${activity.ActivityID}`)}
+    >
       <div>
         <img
           className="activity-card-img rounded-start"

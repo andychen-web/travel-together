@@ -23,10 +23,10 @@ const HomePage = () => {
       })
       .catch((err) => console.log(err));
 
-    getScenicSpots({})
+    getScenicSpots({ city: "Taipei" })
       .then((data) => {
-        setScenicSpots(data.slice(6, 10));
-        setCarouselItems(data.slice(0, 6));
+        setScenicSpots(data.sort(() => Math.random() - 0.5).slice(6, 10));
+        setCarouselItems(data.sort(() => Math.random() - 0.5).slice(6, 10));
       })
       .catch((err) => console.log(err));
   }, []);

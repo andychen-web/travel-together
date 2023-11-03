@@ -39,7 +39,7 @@ const ActivityList = ({ pathname, searchActivities }) => {
                 id={item.ActivityID}
                 city={item.City}
                 name={item.ActivityName}
-                category={"Activity"}
+                dataType={"Activity"}
                 img={item.Picture.PictureUrl1}
               />
             </li>

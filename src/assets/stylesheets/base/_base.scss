@@ -1,5 +1,6 @@
 a {
   text-decoration: none;
+  word-break: break-all;
 }
 li {
   display: block;
@@ -9,4 +10,7 @@ ul {
 }
 .cursor-pointer {
   cursor: pointer;
+}
+main {
+  min-height: 80vh;
 }

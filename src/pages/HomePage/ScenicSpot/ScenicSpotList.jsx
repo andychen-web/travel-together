@@ -10,7 +10,7 @@ const ScenicSpotList = ({ spots }) => {
             id={item.ScenicSpotID}
             city={item.City}
             name={item.ScenicSpotName}
-            category={"ScenicSpot"}
+            dataType={"ScenicSpot"}
             img={item.Picture.PictureUrl1}
           />
         </li>

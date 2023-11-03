@@ -10,7 +10,7 @@ const RestaurantList = ({ restaurants }) => {
             id={item.RestaurantID}
             city={item.City}
             name={item.RestaurantName}
-            category={"Restaurant"}
+            dataType={"Restaurant"}
             img={item.Picture.PictureUrl1}
           />
         </li>

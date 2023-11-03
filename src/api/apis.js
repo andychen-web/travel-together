@@ -1,5 +1,6 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
+import { filterImgFormat } from "../utilities/function";
 const cookies = new Cookies();
 const token = cookies.get("token");
 const headers = {
@@ -9,18 +10,14 @@ const baseUrl = "https://tdx.transportdata.tw/api/basic/v2/Tourism";
 let initialFilterParams =
   "$top=70&$filter=City ne null and Picture/PictureUrl1 ne null";
 let filterParams = initialFilterParams;
-const filterImgFormat = (data) => {
-  const result = data.filter((element) =>
-    element.Picture.PictureUrl1?.endsWith(".jpg" || ".png" || ".gif")
-  );
-  return result;
-};
+let suggestionsFilterParams = initialFilterParams;
+
 export const getScenicSpots = async ({ city, searchInput, category, id }) => {
   filterParams += category ? ` and Class1 eq '${category}'` : "";
   filterParams += searchInput
     ? ` and (indexOf(ScenicSpotName, '${searchInput}') gt -1 or indexOf(Description, '${searchInput}') gt -1)`
     : "";
-  filterParams += id ? ` and ScenicSpotID ne '${id}'` : "";
+  filterParams += id ? ` and ScenicSpotID eq '${id}'` : "";
 
   return axios
     .get(
@@ -50,7 +47,7 @@ export const getActivities = async ({
   filterParams += searchInput
     ? ` and (indexOf(ActivityName, '${searchInput}') gt -1 or indexOf(Description, '${searchInput}') gt -1)`
     : "";
-  filterParams += id ? ` and ActivityID ne '${id}'` : "";
+  filterParams += id ? ` and ActivityID eq '${id}'` : "";
   filterParams += ` and Picture/PictureUrl1 ne null`;
   return axios
     .get(
@@ -69,7 +66,9 @@ export const getRestaurants = async ({ city, searchInput, category, id }) => {
   filterParams += searchInput
     ? ` and (indexOf(RestaurantName, '${searchInput}') gt -1 or indexOf(Description, '${searchInput}') gt -1)`
     : "";
-  filterParams += id ? ` and RestaurantID ne '${id}'` : "";
+  filterParams += id ? ` and RestaurantID eq '${id}'` : "";
+  filterParams += ` and Picture/PictureUrl1 ne null`;
+
   return axios
     .get(
       `${baseUrl}/Restaurant/${city ? city : ""}?${filterParams}&$format=JSON`,
@@ -80,4 +79,24 @@ export const getRestaurants = async ({ city, searchInput, category, id }) => {
       return filterImgFormat(res.data);
     })
     .catch((err) => Promise.reject(err));
+};
+
+export const getSuggestions = async ({ id, dataType, city }) => {
+  if (city) {
+    suggestionsFilterParams += id ? ` and ${dataType}ID ne '${id}'` : "";
+    return axios
+      .get(
+        `${baseUrl}/${dataType}/${
+          city ? city : ""
+        }?${suggestionsFilterParams}&$format=JSON`,
+        {
+          headers,
+        }
+      )
+      .then((res) => {
+        suggestionsFilterParams = initialFilterParams;
+        return res.data;
+      })
+      .catch((err) => Promise.reject(err));
+  }
 };

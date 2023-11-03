@@ -2,21 +2,22 @@ import React, { useState } from "react";
 import pointerGrey from "../assets/images/icons/pointer-grey.svg";
 import { useNavigate } from "react-router-dom";
 import noImage from "../assets/images/no_picture_activity.jpg";
-const Card = ({ item, id, city, name, category, img }) => {
+const Card = ({ id, city, name, dataType, img }) => {
   const [imgIsLoading, setImgIsLoading] = useState(true);
   let shownImg;
-  if (img?.endsWith("jpg") || img?.endsWith(".png") || img?.endsWith(".gif")) {
+  const imageFormats = [".jpg", ".png", ".gif", ".JPG"];
+  if (img && imageFormats.some((format) => img.endsWith(format))) {
     shownImg = img;
   } else {
     shownImg = noImage;
   }
   let words = name.split("");
-  if (words.length > 10) {
-    name = words.slice(0, 15).join("") + "...";
+  if (words.length >= 14) {
+    name = words.slice(0, 14).join("") + "...";
   }
   const navigate = useNavigate();
   const handleCardClick = () => {
-    navigate(`/${category}/${id}`);
+    navigate(`/${dataType}/${id}`);
   };
   return (
     <div className="my-2">
