@@ -1,8 +1,18 @@
 .w-sm-75 {
   width: 75%;
 }
+.map-frame {
+  width: 270px;
+  height: 250px;
+}
 @include media-breakpoint-up(md) {
   .w-md-50 {
     width: 50%;
+  }
+  .map-frame {
+    width: 100%;
+  }
+  .details-wrap {
+    min-width: 360px;
   }
 }
