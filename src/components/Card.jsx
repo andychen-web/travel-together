@@ -3,14 +3,24 @@ import pointerGrey from "../assets/images/icons/pointer-grey.svg";
 import { useNavigate } from "react-router-dom";
 import noImage from "../assets/images/no_picture_activity.jpg";
 const Card = ({ id, city, name, dataType, img }) => {
-  const [imgIsLoading, setImgIsLoading] = useState(true);
-  let shownImg;
-  const imageFormats = [".jpg", ".png", ".gif", ".JPG"];
-  if (img && imageFormats.some((format) => img.endsWith(format))) {
-    shownImg = img;
-  } else {
-    shownImg = noImage;
-  }
+  const [shownImg, setShownImg] = useState("");
+  const testImageLoad = (imgUrl) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = imgUrl;
+      img.onload = () => resolve(true);
+      img.onerror = () => reject(false);
+    });
+  };
+
+  testImageLoad(img)
+    .then(() => {
+      setShownImg(img);
+    })
+    .catch(() => {
+      setShownImg(noImage);
+    });
+
   let words = name.split("");
   if (words.length >= 14) {
     name = words.slice(0, 14).join("") + "...";
@@ -27,8 +37,7 @@ const Card = ({ id, city, name, dataType, img }) => {
       >
         <div className="wrap overflow-hidden rounded">
           <img
-            src={imgIsLoading ? noImage : shownImg}
-            onLoad={() => setImgIsLoading(false)}
+            src={shownImg ? shownImg : noImage}
             className="card-img-general"
             alt="card-img"
           />

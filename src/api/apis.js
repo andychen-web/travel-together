@@ -1,10 +1,12 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { filterImgFormat } from "../utilities/function";
-const cookies = new Cookies();
-const token = cookies.get("token");
-const headers = {
-  authorization: `Bearer ${token}`,
+const getCookieToken = async () => {
+  const cookies = new Cookies();
+  const token = cookies.get("token");
+  return {
+    authorization: `Bearer ${token}`,
+  };
 };
 const baseUrl = "https://tdx.transportdata.tw/api/basic/v2/Tourism";
 let initialFilterParams =
@@ -18,7 +20,9 @@ export const getScenicSpots = async ({ city, searchInput, category, id }) => {
     ? ` and (indexOf(ScenicSpotName, '${searchInput}') gt -1 or indexOf(Description, '${searchInput}') gt -1)`
     : "";
   filterParams += id ? ` and ScenicSpotID eq '${id}'` : "";
+  filterParams += ` and Picture/PictureUrl1 ne null`;
 
+  const headers = await getCookieToken();
   return axios
     .get(
       `${baseUrl}/ScenicSpot/${city ? city : ""}?${filterParams}&$format=JSON`,
@@ -38,6 +42,8 @@ export const getActivities = async ({
   date,
   id,
 }) => {
+  const headers = await getCookieToken();
+
   filterParams += category
     ? ` and Class1 eq '${category}' or Class2 eq '${category}'`
     : "";
@@ -62,13 +68,13 @@ export const getActivities = async ({
 };
 
 export const getRestaurants = async ({ city, searchInput, category, id }) => {
+  const headers = await getCookieToken();
   filterParams += category ? ` and Class eq '${category}'` : "";
   filterParams += searchInput
     ? ` and (indexOf(RestaurantName, '${searchInput}') gt -1 or indexOf(Description, '${searchInput}') gt -1)`
     : "";
   filterParams += id ? ` and RestaurantID eq '${id}'` : "";
   filterParams += ` and Picture/PictureUrl1 ne null`;
-
   return axios
     .get(
       `${baseUrl}/Restaurant/${city ? city : ""}?${filterParams}&$format=JSON`,
@@ -82,6 +88,8 @@ export const getRestaurants = async ({ city, searchInput, category, id }) => {
 };
 
 export const getSuggestions = async ({ id, dataType, city }) => {
+  const headers = await getCookieToken();
+
   if (city) {
     suggestionsFilterParams += id ? ` and ${dataType}ID ne '${id}'` : "";
     return axios
