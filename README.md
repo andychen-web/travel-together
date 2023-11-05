@@ -4,6 +4,10 @@
 
 <img width="70%" src="https://github-production-user-asset-6210df.s3.amazonaws.com/79246459/280512235-61249a15-115e-4acb-91ba-65dd197b71a2.png" alt="Your Image Description">
 
+- 串接交通部 TDX API
+
+- 參考[設計稿 Figma](https://www.figma.com/file/5HQAZ2bunGNKma2fwU0aNZ/The-F2E-3rd---Week1-%E5%8F%B0%E7%81%A3%E6%97%85%E9%81%8A%E6%99%AF%E9%BB%9E%E5%B0%8E%E8%A6%BD?node-id=5%3A1106)。
+
 ## 使用技術
 
 - Bootstrap 5
