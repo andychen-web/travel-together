@@ -1,5 +1,8 @@
 # 台灣旅遊景點導覽網站
+
 [前往網站連結](https://travel-taiwan-three.vercel.app/)
+
+<img width="70%" src="https://github-production-user-asset-6210df.s3.amazonaws.com/79246459/280512235-61249a15-115e-4acb-91ba-65dd197b71a2.png" alt="Your Image Description">
 
 ## 使用技術
 
