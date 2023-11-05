@@ -3,11 +3,16 @@ import { getActivities } from "../../../api/apis";
 import ActivityCard from "./ActivityCard";
 import { routes } from "../../../utilities/routes";
 import Card from "../../../components/Card.jsx";
+import Cookies from "universal-cookie";
+
 const ActivityList = ({ pathname, searchActivities }) => {
   const [recentActivities, setRecentActivities] = useState([]);
   const activityPath = routes[1].path;
+  const cookies = new Cookies();
+  const token = cookies.get("token");
+
   useEffect(() => {
-    if (pathname !== activityPath) {
+    if (pathname !== activityPath && token) {
       getActivities({})
         .then((data) => {
           let shownActivities = data.filter(
@@ -27,7 +32,7 @@ const ActivityList = ({ pathname, searchActivities }) => {
         })
         .catch((err) => console.log(err));
     }
-  }, [pathname]);
+  }, [pathname, token]);
   return (
     <ul className="row">
       {pathname === activityPath ? (

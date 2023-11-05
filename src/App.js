@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./assets/stylesheets/all.scss";
 import Navigation from "./components/Navigation.jsx";
@@ -12,27 +12,31 @@ import OverviewDetailsPage from "./pages/OverviewDetailsPage/OverviewDetailsPage
 import Footer from "./components/Footer";
 function App() {
   const cookies = new Cookies();
-  const token = cookies.get("token");
-
+  const accessToken = cookies.get("token");
+  const [token, setToken] = useState("");
   useEffect(() => {
-    if (!token) {
+    if (accessToken) {
+      setToken(accessToken);
+    } else {
       getAccessToken();
     }
-  }, [token]);
+  }, [accessToken]);
 
   return (
     <Router>
       <Navigation />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="*" element={<HomePage />} />
-        <Route path="/ScenicSpot" element={<ScenicSpotPage />} />
-        <Route path="/ScenicSpot/:id" element={<OverviewDetailsPage />} />
-        <Route path="/Activity" element={<ActivityPage />} />
-        <Route path="/Activity/:id" element={<OverviewDetailsPage />} />
-        <Route path="/Restaurant" element={<RestaurantPage />} />
-        <Route path="/Restaurant/:id" element={<OverviewDetailsPage />} />
-      </Routes>
+      {token && (
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="*" element={<HomePage />} />
+          <Route path="/ScenicSpot" element={<ScenicSpotPage />} />
+          <Route path="/ScenicSpot/:id" element={<OverviewDetailsPage />} />
+          <Route path="/Activity" element={<ActivityPage />} />
+          <Route path="/Activity/:id" element={<OverviewDetailsPage />} />
+          <Route path="/Restaurant" element={<RestaurantPage />} />
+          <Route path="/Restaurant/:id" element={<OverviewDetailsPage />} />
+        </Routes>
+      )}
       <Footer />
     </Router>
   );

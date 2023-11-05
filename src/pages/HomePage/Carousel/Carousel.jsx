@@ -47,7 +47,7 @@ const Carousel = ({ items, overviewPictures }) => {
         </SwiperSlide>
       ))}
       {/* overview page only */}
-      {pictures.length > 0 ? (
+      {pictures?.length > 0 ? (
         pictures.map((pic, index) => (
           <SwiperSlide key={index}>
             <div
