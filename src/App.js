@@ -10,14 +10,14 @@ import { getAccessToken } from "./api/auth.js";
 import Cookies from "universal-cookie";
 import OverviewDetailsPage from "./pages/OverviewDetailsPage/OverviewDetailsPage.jsx";
 import Footer from "./components/Footer";
+import ArticleList from "./pages/ArticlePage/ArticleList.jsx";
+import AdminAuth from "./pages/Backend/AdminAuth.jsx";
+import AdminArticles from "./pages/Backend/AdminArticles.jsx";
 function App() {
   const cookies = new Cookies();
   const accessToken = cookies.get("token");
-  const [token, setToken] = useState("");
   useEffect(() => {
-    if (accessToken) {
-      setToken(accessToken);
-    } else {
+    if (!accessToken) {
       getAccessToken();
     }
   }, [accessToken]);
@@ -25,18 +25,22 @@ function App() {
   return (
     <Router>
       <Navigation />
-      {token && (
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="*" element={<HomePage />} />
-          <Route path="/ScenicSpot" element={<ScenicSpotPage />} />
-          <Route path="/ScenicSpot/:id" element={<OverviewDetailsPage />} />
-          <Route path="/Activity" element={<ActivityPage />} />
-          <Route path="/Activity/:id" element={<OverviewDetailsPage />} />
-          <Route path="/Restaurant" element={<RestaurantPage />} />
-          <Route path="/Restaurant/:id" element={<OverviewDetailsPage />} />
-        </Routes>
-      )}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<HomePage />} />
+        <Route path="/ScenicSpot" element={<ScenicSpotPage />} />
+        <Route path="/ScenicSpot/:id" element={<OverviewDetailsPage />} />
+        <Route path="/Activity" element={<ActivityPage />} />
+        <Route path="/Activity/:id" element={<OverviewDetailsPage />} />
+        <Route path="/Restaurant" element={<RestaurantPage />} />
+        <Route path="/Restaurant/:id" element={<OverviewDetailsPage />} />
+        <Route path="/Articles" element={<ArticleList />} />
+        <Route path="/AdminAuth" element={<ArticleList />} />
+        <Route path="/Admin">
+          <Route path="Articles" element={<AdminArticles />} />
+          <Route path="Auth" element={<AdminAuth />} />
+        </Route>
+      </Routes>
       <Footer />
     </Router>
   );

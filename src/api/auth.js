@@ -22,7 +22,6 @@ export const getAccessToken = async () => {
   return axios
     .post(url, data, { headers })
     .then((res) => {
-      console.log(res.data.access_token)
       saveToken(res.data.access_token);
       return res.data.access_token;
     })
