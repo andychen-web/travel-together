@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "../assets/images/icons/Logo-desktop.svg";
 import { routes } from "../utilities/routes";
+import Cookies from "universal-cookie";
+import { useLocation } from "react-router-dom";
 const Navigation = () => {
+  const cookies = new Cookies();
+  const cookieAdminToken = cookies.get("adminToken");
+  const { pathname } = useLocation();
+  useEffect(() => {
+    setAdminToken(cookies.get("adminToken"));
+  }, [pathname]);
+  const [adminToken, setAdminToken] = useState(cookieAdminToken);
   return (
-    <nav className="navbar navbar-expand-sm container">
+    <nav className="navbar navbar-expand-md container">
       <div className="container-fluid">
         <a className="navbar-brand w-sm-75 w-md-50  me-0" href="/">
           <img width={"70%"} src={Logo} alt="logo" />
@@ -26,6 +35,19 @@ const Navigation = () => {
                 {route.name}
               </a>
             ))}
+            {adminToken ? (
+              <span
+                className="nav-link cursor-pointer"
+                onClick={() => {
+                  cookies.remove("adminToken");
+                  window.location.reload();
+                }}
+              >
+                登出
+              </span>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>

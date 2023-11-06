@@ -16,7 +16,7 @@ const HomePage = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [token, setToken] = useState("");
   const cookies = new Cookies();
-  const accessToken = cookies.get("token");
+  const [accessToken, setAccessToken] = useState(cookies.get("token"));
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     if (accessToken) {
@@ -38,7 +38,7 @@ const HomePage = () => {
         })
         .catch((err) => console.log(err));
     } else {
-      getAccessToken();
+      getAccessToken().then((res) => setAccessToken(res));
       setIsLoading(true);
     }
   }, [accessToken]);
