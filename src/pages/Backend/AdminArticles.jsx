@@ -4,12 +4,14 @@ import Cookies from "universal-cookie";
 import Modal from "react-bootstrap/Modal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ArticleCard from "../ArticlesPage/ArticleCard";
+import { useNavigate } from "react-router-dom";
 
 const AdminArticles = () => {
   const cookies = new Cookies();
   const adminToken = cookies.get("adminToken");
-  const baseUrl = `https://ec-course-api.hexschool.io/v2/api/travel-taiwan/admin`;
-
+  const baseUrl = `${process.env.REACT_APP_CUSTOM_API}/admin`;
+  const navigate = useNavigate();
   const [articles, setArticles] = useState([]);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
@@ -94,23 +96,16 @@ const AdminArticles = () => {
           setShowAddModal(false);
           getArticles();
           setNewArticle(articleInitState);
+        } else {
+          toast("操作失敗", { autoClose: 2000 });
         }
       })
       .catch((err) => {
         console.log(err);
+        toast("操作失敗", { autoClose: 2000 });
       });
   };
   const putArticle = () => {
-    console.log({
-      title: updatedArticle.title,
-      description: updatedArticle.description,
-      image: updatedArticle.image,
-      tag: updatedArticle.tag,
-      create_at: updatedArticle.create_at,
-      author: updatedArticle.author,
-      isPublic: false,
-      content: "content",
-    });
     axios
       .put(
         `${baseUrl}/article/${updateArticleId}`,
@@ -141,6 +136,7 @@ const AdminArticles = () => {
         }
       })
       .catch((err) => {
+        toast("操作失敗", { autoClose: 2000 });
         console.log(err);
       });
   };
@@ -159,24 +155,29 @@ const AdminArticles = () => {
         }
       })
       .catch((err) => {
+        toast("操作失敗", { autoClose: 2000 });
         console.log(err);
       });
   };
   useEffect(() => {
     if (adminToken) {
       getArticles();
+    } else {
+      navigate("/Admin/Auth");
     }
   }, [adminToken]);
   return (
     <main className="container">
       <ToastContainer />
-
-      <button
-        className="btn btn-primary text-white"
-        onClick={() => setShowAddModal(true)}
-      >
-        新增文章
-      </button>
+      <div className="pt-2">
+        <h1>文章管理</h1>
+        <button
+          className="btn btn-primary text-white"
+          onClick={() => setShowAddModal(true)}
+        >
+          新增文章
+        </button>
+      </div>
       <Modal show={showAddModal}>
         <Modal.Header>
           <Modal.Title>新增文章</Modal.Title>
@@ -188,12 +189,12 @@ const AdminArticles = () => {
         <Modal.Body>
           <Modal.Body>
             <div>
-              <label className="pe-5" htmlFor="title">
+              <label className="pe-5" htmlFor="newArticle-title">
                 標題
               </label>
               <input
                 type="text"
-                id="title"
+                id="newArticle-title"
                 name="title"
                 value={newArticle.title}
                 onChange={handleInputChange}
@@ -201,12 +202,12 @@ const AdminArticles = () => {
             </div>
 
             <div className="pt-2">
-              <label className="pe-3" htmlFor="image">
+              <label className="pe-3" htmlFor="newArticle-image">
                 圖片網址
               </label>
               <input
                 type="text"
-                id="image"
+                id="newArticle-image"
                 name="image"
                 value={newArticle.image}
                 onChange={handleInputChange}
@@ -214,12 +215,12 @@ const AdminArticles = () => {
             </div>
 
             <div className="pt-2">
-              <label className="pe-5" htmlFor="tag">
+              <label className="pe-5" htmlFor="newArticle-tag">
                 標籤
               </label>
               <input
                 type="text"
-                id="tag"
+                id="newArticle-tag"
                 name="tag"
                 placeholder="tag1,tag2"
                 value={newArticle.tag.join(",")}
@@ -233,12 +234,12 @@ const AdminArticles = () => {
             </div>
 
             <div className="pt-2">
-              <label className="pe-5" htmlFor="author">
+              <label className="pe-5" htmlFor="newArticle-author">
                 作者
               </label>
               <input
                 type="text"
-                id="author"
+                id="newArticle-author"
                 name="author"
                 value={newArticle.author}
                 onChange={handleInputChange}
@@ -246,12 +247,12 @@ const AdminArticles = () => {
             </div>
 
             <div className="pt-2">
-              <label className="pe-3" htmlFor="isPublic">
+              <label className="pe-3" htmlFor="newArticle-isPublic">
                 是否公開
               </label>
 
               <select
-                id="isPublic"
+                id="newArticle-isPublic"
                 name="isPublic"
                 value={newArticle.isPublic}
                 onChange={handleInputChange}
@@ -265,15 +266,17 @@ const AdminArticles = () => {
               <div>
                 <label
                   className="pe-5 position-relative top-0"
-                  htmlFor="description"
+                  htmlFor="newArticle-description"
                 >
                   內容
                 </label>
               </div>
               <div>
                 <textarea
-                  id="description"
+                  id="newArticle-description"
                   name="description"
+                  rows="5"
+                  cols="25"
                   value={newArticle.description}
                   onChange={handleInputChange}
                 />
@@ -302,41 +305,41 @@ const AdminArticles = () => {
         <Modal.Body>
           <Modal.Body>
             <div>
-              <label className="pe-5" htmlFor="title">
+              <label className="pe-5" htmlFor="updatedArticle-title">
                 標題
               </label>
               <input
                 type="text"
-                id="title"
+                id="updatedArticle-title"
                 name="title"
-                value={updatedArticle?.title}
+                value={updatedArticle?.title || ""}
                 onChange={handleUpdateChange}
               />
             </div>
 
             <div className="pt-2">
-              <label className="pe-3" htmlFor="image">
+              <label className="pe-3" htmlFor="updatedArticle-image">
                 圖片網址
               </label>
               <input
                 type="text"
-                id="image"
+                id="updatedArticle-image"
                 name="image"
-                value={updatedArticle?.image}
+                value={updatedArticle?.image || ""}
                 onChange={handleUpdateChange}
               />
             </div>
 
             <div className="pt-2">
-              <label className="pe-5" htmlFor="tag">
+              <label className="pe-5" htmlFor="updatedArticle-tag">
                 標籤
               </label>
               <input
                 type="text"
-                id="tag"
+                id="updatedArticle-tag"
                 name="tag"
                 placeholder="tag1,tag2"
-                value={updatedArticle?.tag.join(",")}
+                value={updatedArticle?.tag.join(",") || ""}
                 onChange={(e) =>
                   setUpdatedArticle({
                     ...updatedArticle,
@@ -347,26 +350,26 @@ const AdminArticles = () => {
             </div>
 
             <div className="pt-2">
-              <label className="pe-5" htmlFor="author">
+              <label className="pe-5" htmlFor="updatedArticle-author">
                 作者
               </label>
               <input
                 type="text"
-                id="author"
+                id="updatedArticle-author"
                 name="author"
-                value={updatedArticle?.author}
+                value={updatedArticle?.author || ""}
                 onChange={handleUpdateChange}
               />
             </div>
 
             <div className="pt-2">
-              <label className="pe-3" htmlFor="isPublic">
+              <label className="pe-3" htmlFor="updatedArticle-isPublic">
                 是否公開
               </label>
               <select
-                id="isPublic"
+                id="updatedArticle-isPublic"
                 name="isPublic"
-                value={updatedArticle?.isPublic}
+                value={updatedArticle?.isPublic || false}
                 onChange={handleUpdateChange}
               >
                 <option value={true}>是</option>
@@ -378,16 +381,18 @@ const AdminArticles = () => {
               <div>
                 <label
                   className="pe-5 position-relative top-0"
-                  htmlFor="description"
+                  htmlFor="updatedArticle-description"
                 >
                   內容
                 </label>
               </div>
               <div>
                 <textarea
-                  id="description"
+                  id="updatedArticle-description"
                   name="description"
-                  value={updatedArticle?.description}
+                  rows="5"
+                  cols="25"
+                  value={updatedArticle?.description || ""}
                   onChange={handleUpdateChange}
                 />
               </div>
@@ -410,14 +415,7 @@ const AdminArticles = () => {
             key={index}
             className="border border-1 col-md-6 col-12 article-height d-flex flex-column justify-content-between"
           >
-            <h5 className="p-2">{article.title}</h5>
-            <img
-              src={article.image}
-              height="150px"
-              className="w-100 object-fit-cover"
-              alt="article-img"
-            />
-            <p>{article.description}</p>
+            <ArticleCard article={article} />
             <div className="mb-2">
               <div>公開狀態: {article.isPublic ? "公開" : "不公開"}</div>
               <button

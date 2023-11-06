@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
@@ -8,15 +8,23 @@ const AdminAuth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const cookies = new Cookies();
+  const adminToken = cookies.get("adminToken");
+  useEffect(() => {
+    if (adminToken) {
+      navigate("/Admin/Articles");
+    }
+  }, [adminToken]);
   const adminSignIn = () => {
     axios
-      .post(`${process.env.REACT_APP_CUSTOM_API}/admin/signin`, {
+      .post(`${process.env.REACT_APP_AUTH_API}/admin/signin`, {
         username: email,
         password,
       })
       .then((res) => {
         if (res.data.success) {
           authorizeAdmin(res.data.token);
+        } else {
+          setErrorMessage("登入失敗");
         }
       })
       .catch((err) => {
@@ -26,12 +34,14 @@ const AdminAuth = () => {
   };
   const authorizeAdmin = (token) => {
     axios
-      .post(`${process.env.REACT_APP_CUSTOM_API}/api/user/check`, {
+      .post(`${process.env.REACT_APP_AUTH_API}/api/user/check`, {
         headers: { Authorization: token },
       })
       .then((res) => {
         if (res.data.success) {
-          cookies.set("adminToken", token);
+          cookies.set("adminToken", token, {
+            expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+          });
           navigate("/Admin/Articles");
         }
       })
@@ -69,10 +79,10 @@ const AdminAuth = () => {
               id="InputPassword"
             />
           </div>
+          <p className="text-danger">{errorMessage}</p>
           <button type="submit" className="btn btn-primary text-white">
             登入
           </button>
-          <p className="text-danger">{errorMessage}</p>
         </form>
       </div>
     </main>
