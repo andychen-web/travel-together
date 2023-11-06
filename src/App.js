@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./assets/stylesheets/all.scss";
 import Navigation from "./components/Navigation.jsx";
@@ -10,9 +10,10 @@ import { getAccessToken } from "./api/auth.js";
 import Cookies from "universal-cookie";
 import OverviewDetailsPage from "./pages/OverviewDetailsPage/OverviewDetailsPage.jsx";
 import Footer from "./components/Footer";
-import ArticleList from "./pages/ArticlePage/ArticleList.jsx";
+import ArticleList from "./pages/ArticlesPage/ArticleList.jsx";
 import AdminAuth from "./pages/Backend/AdminAuth.jsx";
 import AdminArticles from "./pages/Backend/AdminArticles.jsx";
+import ArticlePage from "./pages/ArticlePage/ArticlePage.jsx";
 function App() {
   const cookies = new Cookies();
   const accessToken = cookies.get("token");
@@ -35,6 +36,7 @@ function App() {
         <Route path="/Restaurant" element={<RestaurantPage />} />
         <Route path="/Restaurant/:id" element={<OverviewDetailsPage />} />
         <Route path="/Articles" element={<ArticleList />} />
+        <Route path="/Articles/:id" element={<ArticlePage />} />
         <Route path="/AdminAuth" element={<ArticleList />} />
         <Route path="/Admin">
           <Route path="Articles" element={<AdminArticles />} />
