@@ -14,6 +14,12 @@
 - React
 - 串接 [TDX API](https://tdx.transportdata.tw/)
 
+## 功能
+- 使用者能根據分類查詢景點、活動、餐廳，並查看相關旅遊文章
+- 網站管理員能對旅遊相關文章進行增刪查改
+    - 測試帳號 test@foo.com
+    - 密碼 mytest
+
 ## 資料夾結構
 ```
 └─src
