@@ -14,6 +14,7 @@ import ArticleList from "./pages/ArticlesPage/ArticleList.jsx";
 import AdminAuth from "./pages/Backend/AdminAuth.jsx";
 import AdminArticles from "./pages/Backend/AdminArticles.jsx";
 import ArticlePage from "./pages/ArticlePage/ArticlePage.jsx";
+import ScrollTop from "./components/ScrollToTop.jsx";
 function App() {
   const cookies = new Cookies();
   const accessToken = cookies.get("token");
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollTop />
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
