@@ -1,10 +1,14 @@
 import React from "react";
 import noResult from "../../assets/images/icons/no-search-result.svg";
 const ArticleCard = ({ article }) => {
+  let date = new Date(article.create_at * 1000);
+  date = date.toLocaleDateString("en-CA");
   return (
     <div id="article">
-      <div className="article_head">
-        <h5 className="py-2">{article.title}</h5>
+      <div className="article_head py-2">
+        <h5>{article.title}</h5>
+        <div>{date}</div>
+        <div>作者 {article.author}</div>
       </div>
       <div className="article_summary">
         <img
