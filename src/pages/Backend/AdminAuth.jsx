@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import Loader from "../../components/Loader.jsx";
 const AdminAuth = () => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
@@ -9,12 +10,14 @@ const AdminAuth = () => {
   const [password, setPassword] = useState("");
   const cookies = new Cookies();
   const adminToken = cookies.get("adminToken");
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     if (adminToken) {
       navigate("/Admin/Articles");
     }
   }, [adminToken]);
   const adminSignIn = () => {
+    setIsLoading(true);
     axios
       .post(`${process.env.REACT_APP_AUTH_API}/admin/signin`, {
         username: email,
@@ -30,6 +33,9 @@ const AdminAuth = () => {
       .catch((err) => {
         setErrorMessage("登入失敗");
         console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
   const authorizeAdmin = (token) => {
@@ -54,6 +60,7 @@ const AdminAuth = () => {
   };
   return (
     <main className="d-flex justify-content-center align-items-center">
+      <Loader isLoading={isLoading} />
       <div>
         <form onSubmit={handleSubmit} autoComplete="on">
           <h2>限管理員登入</h2>

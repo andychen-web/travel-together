@@ -6,8 +6,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ArticleCard from "../ArticlesPage/ArticleCard";
 import { useNavigate } from "react-router-dom";
-
+import Loader from "../../components/Loader";
 const AdminArticles = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const cookies = new Cookies();
   const adminToken = cookies.get("adminToken");
   const baseUrl = `${process.env.REACT_APP_CUSTOM_API}/admin`;
@@ -61,12 +62,14 @@ const AdminArticles = () => {
   };
 
   const getArticles = () => {
+    setIsLoading(true);
     axios
       .get(`${baseUrl}/articles`, { headers: { Authorization: adminToken } })
       .then((res) => {
         setArticles(res.data.articles);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false));
   };
   const postArticle = () => {
     axios
@@ -168,6 +171,7 @@ const AdminArticles = () => {
   }, [adminToken]);
   return (
     <main className="container">
+      <Loader isLoading={isLoading} />
       <ToastContainer />
       <div className="pt-2">
         <h1>文章管理</h1>

@@ -5,8 +5,13 @@ import Modal from "react-bootstrap/Modal";
 
 const Loader = ({ isLoading }) => {
   return (
-    <Modal show={isLoading} className="d-flex justify-content-center">
+    <Modal
+      show={isLoading}
+      id="loader-wrap"
+      className="d-flex justify-content-center"
+    >
       <ThreeDots
+        show={true}
         height="80"
         width="80"
         radius="9"
