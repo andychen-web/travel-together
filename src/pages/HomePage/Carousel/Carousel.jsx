@@ -10,10 +10,7 @@ const Carousel = ({ items, overviewPictures }) => {
   // overviews page
   useEffect(() => {
     for (const key in overviewPictures) {
-      const imageFormats = [".jpg", ".png", ".gif", ".JPG"];
-      if (
-        imageFormats.some((format) => overviewPictures[key].endsWith(format))
-      ) {
+      if (key.includes("PictureUrl")) {
         newArr.push(overviewPictures[key]);
       }
     }
