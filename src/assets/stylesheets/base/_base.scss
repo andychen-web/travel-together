@@ -11,10 +11,23 @@ ul {
 .cursor-pointer {
   cursor: pointer;
 }
-main {
-  min-height: 80vh;
+main.container {
+  min-height: 90vh;
+  margin-top: 2rem;
 }
 #loader-wrap .modal-content {
   background: none;
   border: none;
+}
+img {
+  cursor: pointer;
+}
+/* nav */
+.custom-nav {
+  --bs-bg-opacity: 1;
+  background-color: rgba(#fff, var(--bs-bg-opacity)) !important;
+}
+/* 隱藏瀏覽器預設error跳窗  */
+#webpack-dev-server-client-overlay {
+  display: none;
 }

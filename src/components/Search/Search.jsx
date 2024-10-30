@@ -1,7 +1,7 @@
 import React from "react";
 import { MdSearch } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { CITIES } from "../../utilities/const";
+import { CITIES } from "@/utilities/data";
 
 const Search = ({
   city,

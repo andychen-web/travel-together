@@ -13,6 +13,7 @@
 - Bootstrap 5
 - React
 - 串接 [TDX API](https://tdx.transportdata.tw/)
+- Github Actions
 
 ## 功能
 - 使用者能根據分類查詢景點、活動、餐廳，並查看相關旅遊文章

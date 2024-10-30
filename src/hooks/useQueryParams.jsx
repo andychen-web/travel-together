@@ -16,7 +16,6 @@ const useQueryParams = () => {
     query.searchInput ? query.searchInput : ""
   );
   const [date, setDate] = useState(query.date ? query.date : '');
-  // !warning
   return {
     query,
     pathname,

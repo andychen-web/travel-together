@@ -4,7 +4,7 @@ const MyBreadcrumb = ({ routes }) => {
   const location = useLocation();
   const typeRoute = location.pathname.split("/")[1];
   return (
-    <Breadcrumb>
+    <Breadcrumb className="mt-5 pt-2">
       <Breadcrumb.Item href="/">首頁</Breadcrumb.Item>
       {routes.map((route, index) => {
         return (
