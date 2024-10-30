@@ -1,0 +1,14 @@
+{
+  "login": {
+    "title": "Login",
+    "email": "Email Address",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "loginButton": "Login",
+    "emailError": "Please enter your email address",
+    "passwordError": "Please enter your password",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up",
+    "oauthTitle": "or log in with"
+  }
+}

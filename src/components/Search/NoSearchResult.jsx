@@ -1,5 +1,5 @@
 import React from "react";
-import noSearchResult from "../../assets/images/icons/no-search-result.svg";
+import noSearchResult from "@/assets/images/icons/no-search-result.svg";
 
 const NoSearchResult = () => {
   return (

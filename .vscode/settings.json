@@ -1,0 +1,9 @@
+{
+  "workbench.colorCustomizations": {
+    "terminal.ansiBrightRed": "#8133c2",
+    "activityBar.background": "#397b6f",
+    "titleBar.activeBackground": "#397b6f",
+    "titleBar.activeForeground": "#F5FBFA"
+  },
+  "eslint.enable": false
+}

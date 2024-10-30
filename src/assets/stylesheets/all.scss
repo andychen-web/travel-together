@@ -1,12 +1,15 @@
 @import "~bootstrap/scss/functions";
-@import "./utilities/_variables.scss"; // 客製variables
+@import "./utilities/_variables.scss"; // 修改過的bootstrap variables
 @import "~bootstrap/scss/bootstrap";
 @import "node_modules/bootstrap/scss/mixins/breakpoints";
-@import "./base/_typography.scss";
-@import "./base/_base.scss";
 
-@import "./components/_carousel.scss";
-@import "./components/_card.scss";
-@import "./components/_category.scss";
+// 客製樣式
 
-@import "./utilities/_size.scss";
+// 此處import partial檔案需要編譯 不須加底線"_"
+
+@import "./base/typography.scss";
+@import "./base/base.scss";
+
+@import "./components/index.scss"; // 組件
+
+@import "./utilities/size.scss";

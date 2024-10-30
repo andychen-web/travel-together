@@ -1,0 +1,5 @@
+.btn-custom-primary {
+  @extend .btn-primary;
+  @extend .btn;
+  @extend .text-white;
+}

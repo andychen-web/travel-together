@@ -1,0 +1,14 @@
+{
+  "login": {
+    "title": "登入",
+    "email": "電子郵件地址",
+    "password": "密碼",
+    "rememberMe": "記住我",
+    "loginButton": "登入",
+    "emailError": "請輸入電子郵件地址",
+    "passwordLengthErr": "密碼長度至少為{{count}}個字元",
+    "noAccount": "還沒有帳號?",
+    "signUp": "註冊",
+    "oauthTitle": "或使用以下登入方式"
+  }
+}
