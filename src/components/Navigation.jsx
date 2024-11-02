@@ -12,14 +12,13 @@ import { basePath } from "@/utilities/data";
 const Navigation = () => {
   const { routes, navLinks } = useContext(NavContext);
   const links = routes
+    .filter((item) => {
+      return item.visibleOnNav !== false; //排除不顯示的路由
+    })
     .map((item) => {
-      if (!item.name) return; //若無nav說明
       return {
         parent: { path: item.path, name: item.name, children: item.children },
       };
-    })
-    .filter((item) => {
-      return item;
     });
   const cookies = new Cookies();
   const cookieAdminToken = cookies.get("adminToken");

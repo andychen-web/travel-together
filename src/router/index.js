@@ -17,7 +17,9 @@ import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
 import PageNotFound from "@/pages/PageNotFound/PageNotFound";
 // utils
 import { basePath } from "@/utilities/data";
-const Layout = () => {
+
+// 前台
+const ClientLayoutContainer = () => {
   return (
     <>
       <ScrollTop />
@@ -27,20 +29,24 @@ const Layout = () => {
     </>
   );
 };
+// TODO 後台
+
 const router = createBrowserRouter([
   {
     path: "/", //首頁
     element: <Navigate to={basePath} replace />, //自動跳轉
     name: "",
+    visibleOnNav: false,
   },
   {
     path: "/test",
     element: <Test></Test>,
     name: "test",
+    visibleOnNav: false,
   },
   {
     path: basePath,
-    element: <Layout />, // 每頁都有的元件
+    element: <ClientLayoutContainer />,
     children: [
       {
         path: "",
@@ -62,7 +68,7 @@ const router = createBrowserRouter([
 
   {
     path: "/TDX", //台灣旅遊公開資料
-    element: <Layout />, // 每頁都有的元件
+    element: <ClientLayoutContainer />,
     children: [
       {
         path: "ScenicSpot",
@@ -115,13 +121,14 @@ const router = createBrowserRouter([
   // 若找無頁面(必放最後)
   {
     path: "/",
-    element: <Layout />,
+    element: <ClientLayoutContainer />,
     children: [
       {
         path: "*",
         element: <PageNotFound />,
       },
     ],
+    visibleOnNav: false,
     name: "",
   },
 ]);
