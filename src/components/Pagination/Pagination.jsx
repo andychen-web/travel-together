@@ -31,7 +31,7 @@ const Pagination = ({ paginationDetails, paginationStyle = "basic" }) => {
   };
   return (
     <nav>
-      {paginationStyle == "basic" ? (
+      {paginationStyle === "basic" ? (
         <ul className="pagination">
           <li className={`page-item ${!has_pre ? "disabled" : ""}`}>
             <a
