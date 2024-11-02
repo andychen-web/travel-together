@@ -15,7 +15,11 @@ export const hotelsParameters = () => {
   };
 };
 
-export const getHotels = async (city) => {
+export async function getHotels(city) {
   const url = `/hotels`;
   return commonAxiosInstance.get(url);
-};
+}
+export async function getHotelById(id) {
+  const url = `/hotels/${id}`;
+  return commonAxiosInstance.get(url);
+}
