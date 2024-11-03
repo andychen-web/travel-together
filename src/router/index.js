@@ -10,9 +10,14 @@ import AdminAuth from "@/pages/TDXOpenData/AdminBasicSettings/AdminAuth.jsx";
 import AdminArticles from "@/pages/TDXOpenData/AdminBasicSettings/AdminArticles.jsx";
 import ArticlePage from "@/pages/TDXOpenData/ArticlePage/ArticlePage.jsx";
 import ScrollTop from "@/components/ScrollToTop.jsx";
-import HotelsPage from "@/pages/TravelService/HotelList/HotelsPage.jsx";
+// HOTEL
+import HotelListPage from "@/pages/TravelService/HotelListPage/HotelListPage.jsx";
+import AddHotelPage from "@/pages/TravelService/HotelPage/AddHotelPage";
+import HotelDetailPage from "../pages/TravelService/HotelPage/HotelDetailPage.jsx";
+
+// AUTH
 import LoginPage from "@/pages/TravelService/Auth/LoginPage";
-import Test from "@/pages/Test.jsx";
+import Test from "@/pages/Test.jsx"; // TODO
 import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
 import PageNotFound from "@/pages/PageNotFound/PageNotFound";
 // utils
@@ -36,17 +41,16 @@ const router = createBrowserRouter([
     path: "/", //首頁
     element: <Navigate to={basePath} replace />, //自動跳轉
     name: "",
-    visibleOnNav: false,
   },
   {
     path: "/test",
     element: <Test></Test>,
     name: "test",
-    visibleOnNav: false,
   },
   {
     path: basePath,
     element: <ClientLayoutContainer />,
+    isVisibleOnNav: true,
     children: [
       {
         path: "",
@@ -55,12 +59,25 @@ const router = createBrowserRouter([
       {
         path: "hotels",
         name: "旅館",
-        element: <HotelsPage />,
+        element: <HotelListPage />,
+        isVisibleOnNav: true,
+      },
+      {
+        path: "rooms/:id",
+        name: "住宿詳情",
+        element: <HotelDetailPage />,
+      },
+      {
+        path: "add-hotel",
+        name: "新增旅館",
+        element: <AddHotelPage />,
+        isVisibleOnNav: true,
       },
       {
         path: "login",
         name: "登入",
         element: <LoginPage />,
+        isVisibleOnNav: true,
       },
     ],
     name: "優質旅館",
@@ -69,11 +86,13 @@ const router = createBrowserRouter([
   {
     path: "/TDX", //台灣旅遊公開資料
     element: <ClientLayoutContainer />,
+    isVisibleOnNav: true,
     children: [
       {
         path: "ScenicSpot",
         name: "探索景點",
         element: <ScenicSpotPage />,
+        isVisibleOnNav: true,
       },
       {
         path: "ScenicSpot/:id",
@@ -83,6 +102,7 @@ const router = createBrowserRouter([
         path: "Activity",
         name: "節慶活動",
         element: <ActivityPage />,
+        isVisibleOnNav: true,
       },
       {
         path: "Activity/:id",
@@ -92,6 +112,7 @@ const router = createBrowserRouter([
         path: "Restaurant",
         name: "品嚐美食",
         element: <RestaurantPage />,
+        isVisibleOnNav: true,
       },
       {
         path: "Restaurant/:id",
@@ -101,6 +122,7 @@ const router = createBrowserRouter([
         path: "Articles",
         name: "文章列表",
         element: <ArticleList />,
+        isVisibleOnNav: true,
       },
       {
         path: "Articles/:id",
@@ -128,7 +150,6 @@ const router = createBrowserRouter([
         element: <PageNotFound />,
       },
     ],
-    visibleOnNav: false,
     name: "",
   },
 ]);

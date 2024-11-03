@@ -8,7 +8,7 @@ const Footer = () => {
   };
   return (
     <footer
-      style={{ height: "4.5rem" }}
+      style={{ height: "4rem" }}
       className="footer bg-primary text-white p-3 text-center"
     >
       <div>

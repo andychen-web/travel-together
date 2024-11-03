@@ -1,26 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Card, Badge } from "react-bootstrap";
 
-// 星光飯店資料
-const hotelData = {
-  name: "星光飯店",
-  city: "台北市",
-  country: "台灣",
-  description:
-    "星光飯店是一家豪華的飯店，提供舒適的住宿和一流的服務，讓您享受完美的假期。",
-  type: "Budget",
-  adultCount: 2,
-  childCount: 1,
-  facilities: ["免費Wi-Fi", "游泳池", "健身房", "餐廳", "酒吧"],
-  pricePerNight: 3500,
-  starRating: 5,
-  imageUrls: [],
-};
 
-const HotelCard = () => {
+const RoomCard = ({hotelData}) => {
   const [hotel, setHotel] = useState({});
 
   useEffect(() => {
-    setHotel(data);
+    setHotel(hotelData);
   }, []);
 
   const handleAppointment = () => {
@@ -58,4 +44,4 @@ const HotelCard = () => {
   );
 };
 
-export default HotelCard;
+export default RoomCard;

@@ -102,6 +102,28 @@ export const notifyError = (message) => {
     theme: "light",
   });
 };
+// toast 成功通知
+export const showToast = ({ message, type }) => {
+  if (type === "SUCCESS") {
+    toast.success(message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      theme: "light",
+    });
+  } else if (type === "ERROR") {
+    toast.error(message, {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      theme: "light",
+    });
+  }
+};
 
 // 多個loading處理
 export const updateLoadingArrayState = (setLoadingArray, index, value) => {

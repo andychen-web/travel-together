@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import FilterHotelsForm from "./FilterHotelsForm";
+import FilterHotelsForm from "./FilterHotelsForm.jsx";
 import Loader from "@/components/Loader";
-import HotelList from "./HotelList";
+import HotelList from "./HotelList.jsx";
 import MyBreadCrumb from "@/components/MyBreadCrumb.jsx";
 import NoSearchResult from "@/components/Search/NoSearchResult.jsx";
-const HotelsPage = () => {
+const HotelListPage = () => {
   const [hotels, setHotels] = useState([]);
   const [isLoadingArray, setIsLoadingArray] = useState([]);
   const isAllLoading = isLoadingArray.some((singleLoading) => singleLoading);
@@ -26,4 +26,4 @@ const HotelsPage = () => {
   );
 };
 
-export default HotelsPage;
+export default HotelListPage;
