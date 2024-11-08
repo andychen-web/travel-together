@@ -10,7 +10,7 @@ import AdminAuth from "@/pages/TDXOpenData/AdminBasicSettings/AdminAuth.jsx";
 import AdminArticles from "@/pages/TDXOpenData/AdminBasicSettings/AdminArticles.jsx";
 import ArticlePage from "@/pages/TDXOpenData/ArticlePage/ArticlePage.jsx";
 import ScrollTop from "@/components/ScrollToTop.jsx";
-import HotelsPage from "@/pages/TravelService/HotelList/HotelsPage.jsx";
+import HotelsPage from "../pages/TravelService/HotelListPage/HotelList.jsx";
 import LoginPage from "@/pages/TravelService/Auth/LoginPage";
 import Test from "@/pages/Test.jsx";
 import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";

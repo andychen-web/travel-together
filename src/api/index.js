@@ -3,6 +3,7 @@ import * as tempTestApi from "@/api/tempTest";
 import * as tdxTourismApi from "@/api/tdx/tdxTourism_api";
 
 import * as hotelsApi from "@/api/hotels/hotels_api";
+import * as usersApi from "@/api/users/users_api";
 //**********
 // 共用模組
 //**********
@@ -23,3 +24,11 @@ export const apiGetTdxScenicSpots = tdxTourismApi.getScenicSpots;
 //********************
 export const apiHotelParams = hotelsApi.hotelsParameters;
 export const apiGetHotels = hotelsApi.getHotels;
+
+//********************
+// 使用者
+//********************
+export const apiGetUsers = usersApi.getUsers;
+export const apiGetUserById = usersApi.getUserById;
+export const apiBlockUserById = usersApi.blockUserById;
+export const apiUnblockUserById = usersApi.unblockUserById;

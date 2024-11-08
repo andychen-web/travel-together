@@ -11,6 +11,7 @@ import Container from "react-bootstrap/Container";
 import { basePath } from "@/utilities/data";
 const Navigation = () => {
   const { routes, navLinks } = useContext(NavContext);
+  // TODO 使用reduce 優化
   const links = routes
     .filter((item) => {
       return item.visibleOnNav !== false; //排除不顯示的路由

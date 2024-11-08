@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 import { notifyError } from "@/utilities/global_util";
 
-// 非交通部，屬於自家後端的api
+// 自家後端的api
 const commonAxiosInstance = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL,
 });
@@ -10,6 +10,7 @@ const commonAxiosInstance = axios.create({
 // 添加請求攔截器
 commonAxiosInstance.interceptors.request.use(
   async (config) => {
+    // TODO cookie util
     const cookies = new Cookies();
     // const token = cookies.get("tdx_token");
     // if (token) {
