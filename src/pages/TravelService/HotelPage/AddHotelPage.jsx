@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ManageHotelForm from "./Form/ManageHotelForm.jsx";
-import { showToast } from "@/utilities/global_util";
+import { showToast } from "@/utilities/globalUtil";
 // import { useAppContext } from "../contexts/AppContext";
 const AddHotel = () => {
   const [isLoading, setIsLoading] = useState(false);

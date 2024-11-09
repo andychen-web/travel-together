@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { apiGetHotels, apiHotelParams } from "@/api";
-import { updateLoadingArrayState } from "@/utilities/global_util";
+import { updateLoadingArrayState } from "@/utilities/globalUtil";
 const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
   const [hotelsFilter, setHotelsFilter] = useState(
     apiHotelParams().hotelsFilter
@@ -23,20 +23,21 @@ const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
     fetchData();
   }, []);
   return (
-    <div className="container">
+    <div>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="cityCode">城市</label>
-          <input
-            type="text"
-            className="form-control"
+          <label htmlFor="cityCode">地點</label>
+          {/* // TODO */}
+          <select
+            className="form-select"
             id="cityCode"
             value={hotelsFilter.cityCode}
             onChange={(e) =>
               setHotelsFilter({ ...hotelsFilter, cityCode: e.target.value })
             }
-            placeholder="Enter city code (e.g., PAR)"
-          />
+          >
+            {/*  */}
+          </select>
         </div>
         <button className="btn-custom-primary" type="submit">
           查詢

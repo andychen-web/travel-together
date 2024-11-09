@@ -18,7 +18,10 @@ const NavProvider = ({ children }) => {
         path: child.path ? `${route.path}/${child.path}` : `${route.path}`,
         name: child.name,
       }));
+  }).filter((item) => {
+    return item;
   });
+  
   indexToRemoved.forEach((index) => navLinks.splice(index, 1));
   return (
     <NavContext.Provider

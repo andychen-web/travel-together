@@ -1,6 +1,6 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
-import { notifyError } from "@/utilities/global_util";
+import { notifyError } from "@/utilities/globalUtil";
 
 const tdxAxiosInstance = axios.create({
   baseURL: "https://tdx.transportdata.tw/api/basic/v2/Tourism",

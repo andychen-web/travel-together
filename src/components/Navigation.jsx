@@ -10,10 +10,11 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { basePath } from "@/utilities/data";
 const Navigation = () => {
   const { routes, navLinks } = useContext(NavContext);
-  const parentLinks = routes.filter((item) => {
+  const parentLinks = JSON.parse(JSON.stringify(routes)).filter((item) => {
     return item.isVisibleOnNav; //排除不顯示的Parent路由
   });
   parentLinks.forEach((item) => {
+    if (!item.children) return;
     item.children.forEach((child, i) => {
       if (!child.isVisibleOnNav) {
         delete item.children[i]; //排除不顯示的Child路由

@@ -28,6 +28,7 @@ const Card = ({ id, city, name, currentPath, img }) => {
     name = words.slice(0, 14).join("") + "...";
   }
   const handleCardClick = () => {
+    console.log(`${currentPath}/${id}`);
     navigate(`${currentPath}/${id}`);
   };
   return (

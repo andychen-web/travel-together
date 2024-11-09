@@ -1,4 +1,4 @@
-import { notifyError } from "@/utilities/global_util";
+import { notifyError } from "@/utilities/globalUtil";
 import { Cookie } from "@/utilities/cookie";
 import axios from "axios";
 // 處理 API 錯誤的函數

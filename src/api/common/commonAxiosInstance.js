@@ -1,6 +1,6 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
-import { notifyError } from "@/utilities/global_util";
+import { notifyError } from "@/utilities/globalUtil";
 
 // 非交通部，屬於自家後端的api
 const commonAxiosInstance = axios.create({

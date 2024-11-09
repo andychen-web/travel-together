@@ -93,7 +93,6 @@ const OverviewDetailsPage = () => {
   const timeDuration =
     overview.StartTime &&
     `${overview.StartTime.slice(0, 10)} - ${overview.EndTime.slice(0, 10)}`;
-
   return Object.keys(overview).length > 0 ? (
     <main className="container">
       <MyBreadCrumb routes={[routeName, overviewName]} />
@@ -102,7 +101,7 @@ const OverviewDetailsPage = () => {
         overviewName={overviewName}
         overviewClassList={overviewClassList}
       />
-      <OverviewDescription description={overview.Description} />
+      <OverviewDescription description={overview.Description || overview.DescriptionDetail} />
       <div className="d-flex flex-wrap flex-md-nowrap">
         <OverviewDetails
           currentRoute={currentRoute}

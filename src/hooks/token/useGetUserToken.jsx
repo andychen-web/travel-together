@@ -1,6 +1,6 @@
 // import { apiGetADSAccessToken } from "@/api";
 import Cookies from "universal-cookie";
-import { notifyError } from "@/utilities/global_util";
+import { notifyError } from "@/utilities/globalUtil";
 export const useGetUserToken = async () => {
   const cookies = new Cookies();
   const accessToken = cookies.get("ADS_token");
