@@ -18,7 +18,7 @@ export const apiGetTdxScenicSpots = tdxTourismApi.getScenicSpots;
 //********************
 export const apiHotelParams = hotelsApi.hotelsParameters;
 export const apiGetHotels = hotelsApi.getHotels;
-
+export const apiGetHotelById = hotelsApi.getHotelById;
 
 //********************
 // 使用者

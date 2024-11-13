@@ -12,10 +12,10 @@ commonAxiosInstance.interceptors.request.use(
   async (config) => {
     // TODO cookie util
     const cookies = new Cookies();
-    // const token = cookies.get("tdx_token");
-    // if (token) {
-    //   config.headers.Authorization = `Bearer ${token}`;
-    // }
+    const token = cookies.get("jwt");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
   },
   (error) => {

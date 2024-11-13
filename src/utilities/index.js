@@ -3,8 +3,8 @@
 //**********
 import { notifyError } from "@/utilities/globalUtil";
 import { showToast } from "@/utilities/globalUtil";
-import { handleADSGetApiError } from "@/utilities/apiUtil";
-export { notifyError, showToast, handleADSGetApiError };
+import { handleGetApiError } from "@/utilities/apiUtil";
+export { notifyError, showToast, handleGetApiError };
 
 Array.from(document.querySelectorAll("._acan")).forEach((btn, i) => {
     // remove this btn's class _acan after click
