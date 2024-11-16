@@ -1,16 +1,17 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
-import { notifyError } from "@/utilities/globalUtil";
+import { notifyError, showToast } from "@/utilities/globalUtil";
 
 // 自家後端的api
 const commonAxiosInstance = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 
+let currentConfig
 // 添加請求攔截器
 commonAxiosInstance.interceptors.request.use(
   async (config) => {
-    // TODO cookie util
+    currentConfig = config;
     const cookies = new Cookies();
     const token = cookies.get("jwt");
     if (token) {
@@ -26,6 +27,10 @@ commonAxiosInstance.interceptors.request.use(
 // 添加回應攔截器
 commonAxiosInstance.interceptors.response.use(
   (response) => {
+    // 除GET以外的操作都顯示toast 
+    if (currentConfig.method !== 'get') {
+      showToast({ type: "OK", msg: currentConfig.toastText + "成功" });
+    }
     return response.data;
   },
   (error) => {

@@ -103,9 +103,9 @@ export const notifyError = (message) => {
   });
 };
 // toast 成功通知
-export const showToast = ({ message, type }) => {
-  if (type === "SUCCESS") {
-    toast.success(message, {
+export const showToast = ({ type, msg }) => {
+  if (type === "OK") {
+    toast.success(msg, {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -113,8 +113,8 @@ export const showToast = ({ message, type }) => {
       pauseOnHover: true,
       theme: "light",
     });
-  } else if (type === "ERROR") {
-    toast.error(message, {
+  } else if (type === "WARN") {
+    toast.warn(msg, {
       position: "top-right",
       autoClose: 2000,
       hideProgressBar: false,

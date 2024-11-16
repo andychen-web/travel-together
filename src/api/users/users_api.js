@@ -19,6 +19,7 @@ export async function getUsers(filter) {
   const url = `/users/list`;
   return commonAxiosInstance.get(url, {
     params: filter,
+    toastText: "使用者",
   });
 }
 export async function getUserById(id) {

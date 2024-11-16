@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ManageHotelForm from "./Form/ManageHotelForm.jsx";
-import { showToast } from "@/utilities/globalUtil";
+import { showToast, notifyError } from "@/utilities/globalUtil";
 // import { useAppContext } from "../contexts/AppContext";
 const AddHotel = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -17,9 +17,9 @@ const AddHotel = () => {
         throw new Error("Error Saving Hotel");
       }
 
-      showToast({ message: "Hotel Saved!", type: "SUCCESS" });
+      showToast({ type: "OK", msg: "Hotel Saved!" });
     } catch (error) {
-      showToast({ message: error.message, type: "ERROR" });
+      notifyError(error.message);
     } finally {
       setIsLoading(false);
     }
