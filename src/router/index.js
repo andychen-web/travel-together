@@ -18,6 +18,7 @@ import HotelDetailPage from "../pages/TravelService/HotelPage/HotelDetailPage.js
 // AUTH
 import LoginPage from "@/pages/TravelService/Auth/LoginPage";
 import Test from "@/pages/Test.jsx"; // TODO
+import ProtectedRoute from "../components/RouteGuard/ProtectedRoute.jsx";
 import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
 import PageNotFound from "@/pages/PageNotFound/PageNotFound";
 // utils
@@ -70,7 +71,11 @@ const router = createBrowserRouter([
       {
         path: "add-hotel",
         name: "新增旅館",
-        element: <AddHotelPage />,
+        element: (
+          <ProtectedRoute>
+            <AddHotelPage />
+          </ProtectedRoute>
+        ),
         isVisibleOnNav: true,
       },
       {

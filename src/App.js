@@ -7,16 +7,21 @@ import router from "@/router";
 import { NavProvider } from "@/context/NavContext";
 
 import { ToastContainer } from "react-toastify";
+import AuthProvider from "./components/RouteGuard/TEMP_AuthProvider";
 
 function App() {
   // token
-  useGetTdxToken();
-  // useGetUserToken();
+  useEffect(() => {
+    useGetTdxToken();
+    // useGetUserToken();
+  }, []);
   return (
-    <NavProvider>
-      <ToastContainer />
-      <RouterProvider router={router} />
-    </NavProvider>
+    <AuthProvider>
+      <NavProvider>
+        <ToastContainer />
+        <RouterProvider router={router} />
+      </NavProvider>
+    </AuthProvider>
   );
 }
 export default App;
