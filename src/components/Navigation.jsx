@@ -7,7 +7,7 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { basePath } from "@/utilities/data";
+import { basePath } from "@/utilities/routeUtil";
 const Navigation = () => {
   const { routes, navLinks } = useContext(NavContext);
   const parentLinks = JSON.parse(JSON.stringify(routes)).filter((item) => {

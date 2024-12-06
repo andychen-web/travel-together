@@ -1,6 +1,6 @@
-import commonAxiosInstance from "@/api/common/commonAxiosInstance";
+import travelAxiosInstance from "@/api/common/travelAxiosInstance";
 
-export const hotelsParameters = () => {
+export const hotelsParams = () => {
   // 查詢條件
   const hotelsFilter = {};
 
@@ -15,11 +15,11 @@ export const hotelsParameters = () => {
   };
 };
 
-export async function getHotels(city) {
+export async function getHotels(filter) {
   const url = `/hotels`;
-  return commonAxiosInstance.get(url);
+  return travelAxiosInstance.get(url);
 }
 export async function getHotelById(id) {
   const url = `/hotels/${id}`;
-  return commonAxiosInstance.get(url);
+  return travelAxiosInstance.get(url);
 }

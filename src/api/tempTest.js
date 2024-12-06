@@ -1,5 +1,6 @@
-import commonAxiosInstance from "@/api/common/commonAxiosInstance";
+import travelAxiosInstance from "@/api/common/travelAxiosInstance";
 
-// commonAxiosInstance.get("/users/list").then((res) => {
+// travelAxiosInstance.get("/users/list").then((res) => {
 //   console.log(res);
 // });
+

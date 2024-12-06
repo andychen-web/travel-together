@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "@/assets/stylesheets/all.scss";
 import useGetTdxToken from "@/hooks/token/useGetTdxToken";
 // import { useGetUserToken } from "@/hooks/token/useGetUserToken";
@@ -7,16 +7,21 @@ import router from "@/router";
 import { NavProvider } from "@/context/NavContext";
 
 import { ToastContainer } from "react-toastify";
-import AuthProvider from "./components/RouteGuard/TEMP_AuthProvider";
+import { AuthProvider } from "@/context/AuthContext";
 
 function App() {
+  const [isSignedIn, setIsSignedIn] = useState(false); // 管理登入狀態
   // token
+  useGetTdxToken();
   useEffect(() => {
-    useGetTdxToken();
-    // useGetUserToken();
+    const checkSignedIn = async () => {
+      // await useGetUserToken();
+      // setIsSignedIn(true);
+    };
+    checkSignedIn();
   }, []);
   return (
-    <AuthProvider>
+    <AuthProvider isSignedIn={false}>
       <NavProvider>
         <ToastContainer />
         <RouterProvider router={router} />

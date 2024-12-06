@@ -22,7 +22,7 @@ import ProtectedRoute from "../components/RouteGuard/ProtectedRoute.jsx";
 import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
 import PageNotFound from "@/pages/PageNotFound/PageNotFound";
 // utils
-import { basePath } from "@/utilities/data";
+import { basePath } from "@/utilities/routeUtil";
 
 // 前台
 const ClientLayoutContainer = () => {

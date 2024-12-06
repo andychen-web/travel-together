@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import OauthContainer from "./OauthContainer";
 import { Link, useNavigate } from "react-router-dom";
-
+import {apiLogin} from "@/api";
 import { useTranslation } from "react-i18next";
 
 const LoginPage = () => {
@@ -17,8 +17,9 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (model) => {
+    const res =await apiLogin(model);
+    // navigate("/");
   };
 
   return (

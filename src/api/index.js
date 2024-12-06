@@ -1,9 +1,12 @@
 import * as tempTestApi from "@/api/tempTest";
 
-import * as tdxTourismApi from "@/api/tdx/tdxTourism_api";
+import * as tdxTourismApi from "@/api/tdx/tdxTourismApi";
 
-import * as hotelsApi from "@/api/hotels/hotels_api";
-import * as usersApi from "@/api/users/users_api";
+import * as hotelsApi from "@/api/hotels/hotelsApi";
+import * as myBookingApi from "@/api/my-bookings/myBookingApi";
+import * as usersApi from "@/api/users/usersApi";
+// ---------Auth---------
+import * as authApi from "@/api/auth/authApi";
 
 //**********
 // TDX 服務 API
@@ -16,9 +19,14 @@ export const apiGetTdxScenicSpots = tdxTourismApi.getScenicSpots;
 //********************
 // 飯店
 //********************
-export const apiHotelParams = hotelsApi.hotelsParameters;
+export const apiHotelParams = hotelsApi.hotelsParams;
 export const apiGetHotels = hotelsApi.getHotels;
 export const apiGetHotelById = hotelsApi.getHotelById;
+//****************
+// 使用者的旅館預訂
+//****************
+export const apiMyBookingParams = myBookingApi.myBookingParams;
+export const apiGetUserBookings = myBookingApi.getUserBookings;
 
 //********************
 // 使用者
@@ -27,3 +35,26 @@ export const apiGetUsers = usersApi.getUsers;
 export const apiGetUserById = usersApi.getUserById;
 export const apiBlockUserById = usersApi.blockUserById;
 export const apiUnblockUserById = usersApi.unblockUserById;
+
+//****************
+// 權限
+//****************
+export const apiLogin = authApi.login;
+export const apiValidateToken = authApi.validateToken;
+export const apiLogout = authApi.logout;
+export const apiRefreshToken = authApi.refreshToken;
+//****************
+// section2
+//****************
+
+//****************
+// section3
+//****************
+function test() {
+  apiLogin({
+    email: "demo@gmail.com",
+    password: "demo",
+  });
+  apiGetUserBookings(apiMyBookingParams().myBookingFilter);
+}
+test();
