@@ -9,7 +9,7 @@ export async function handleGetApiError(response, action) {
 
     switch (status) {
       case 400:
-        notifyError(`參數錯誤： ${data.message}`);
+        notifyError(`無效請求，請確認欄位正確後再試： ${data.message}`);
         break;
       case 401:
         // 若以前端控制jwt放入Cookie

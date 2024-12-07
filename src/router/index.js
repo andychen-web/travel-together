@@ -21,8 +21,6 @@ import Test from "@/pages/Test.jsx"; // TODO
 import ProtectedRoute from "../components/RouteGuard/ProtectedRoute.jsx";
 import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
 import PageNotFound from "@/pages/PageNotFound/PageNotFound";
-// utils
-import { basePath } from "@/utilities/routeUtil";
 
 // 前台
 const ClientLayoutContainer = () => {
@@ -39,9 +37,16 @@ const ClientLayoutContainer = () => {
 
 const router = createBrowserRouter([
   {
-    path: "/", //首頁
-    element: <Navigate to={basePath} replace />, //自動跳轉
+    path: "/",
+    element: <ClientLayoutContainer />,
     name: "",
+    children: [
+      {
+        path: "",
+        element: <HomePage />,
+        name: "首頁",
+      },
+    ],
   },
   {
     path: "/test",
@@ -49,8 +54,9 @@ const router = createBrowserRouter([
     name: "test",
   },
   {
-    path: basePath,
+    path: "/travel",
     element: <ClientLayoutContainer />,
+    name: "優質住宿",
     isVisibleOnNav: true,
     children: [
       {
@@ -58,8 +64,8 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "hotels",
-        name: "旅館",
+        path: "rooms",
+        name: "探索住宿",
         element: <HotelListPage />,
         isVisibleOnNav: true,
       },
@@ -70,7 +76,7 @@ const router = createBrowserRouter([
       },
       {
         path: "add-hotel",
-        name: "新增旅館",
+        name: "新增住宿",
         element: (
           <ProtectedRoute>
             <AddHotelPage />
@@ -84,8 +90,13 @@ const router = createBrowserRouter([
         element: <LoginPage />,
         isVisibleOnNav: true,
       },
+      {
+        path: "signup",
+        name: "註冊",
+        element: <LoginPage />,
+        isVisibleOnNav: true,
+      },
     ],
-    name: "優質旅館",
   },
 
   {

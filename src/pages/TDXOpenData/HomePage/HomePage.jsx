@@ -10,7 +10,6 @@ import Cookies from "universal-cookie";
 import { getAccessToken } from "@/api/tdx/auth";
 import Loader from "@/components/Loader.jsx";
 import { useNavigate } from "react-router-dom";
-import { basePath } from "@/utilities/routeUtil";
 const HomePage = () => {
   const [scenicSpots, setScenicSpots] = useState([]);
   const [carouselItems, setCarouselItems] = useState([]);
@@ -42,7 +41,7 @@ const HomePage = () => {
       getAccessToken().then((res) => setAccessToken(res));
       setIsLoading(true);
     }
-    navigate(basePath);
+    navigate('/');
   }, [accessToken]);
   return (
     <main className="container">

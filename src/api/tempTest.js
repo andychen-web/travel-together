@@ -4,3 +4,9 @@ import travelAxiosInstance from "@/api/common/travelAxiosInstance";
 //   console.log(res);
 // });
 
+// travelAxiosInstance.put("/auth/update-password", {
+//   email: "demo@gmail.com",
+//   password: "demoUser1",
+// }).then((res) => {
+//   console.log(res);
+// });

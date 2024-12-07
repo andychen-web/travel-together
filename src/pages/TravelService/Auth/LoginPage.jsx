@@ -1,8 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import OauthContainer from "./OauthContainer";
-import { Link, useNavigate } from "react-router-dom";
-import {apiLogin} from "@/api";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { apiLogin } from "@/api";
 import { useTranslation } from "react-i18next";
 
 const LoginPage = () => {
@@ -10,6 +10,7 @@ const LoginPage = () => {
   const { t } = useTranslation();
   // 路由
   const navigate = useNavigate();
+  const location = useLocation();
 
   const {
     register,
@@ -18,8 +19,9 @@ const LoginPage = () => {
   } = useForm();
 
   const onSubmit = async (model) => {
-    const res =await apiLogin(model);
-    // navigate("/");
+    const res = await apiLogin(model);
+    const basePath = location.pathname.split('/').slice(0, -1).join('/'); //最後一個path之前的完整path
+    navigate(basePath + "/rooms");
   };
 
   return (
@@ -48,9 +50,9 @@ const LoginPage = () => {
                 {...register("password", {
                   required: "This field is required",
                   minLength: {
-                    value: 6,
-                    message: t("login.passwordLengthErr",{
-                      count: 6,
+                    value: 4,
+                    message: t("login.passwordLengthErr", {
+                      count: 4,
                     }),
                   },
                 })}
@@ -61,7 +63,6 @@ const LoginPage = () => {
               {errors.password && (
                 <span className="text-danger">{errors.password.message}</span>
               )}
-
             </div>
             {/* <div className="form-check">
               <input

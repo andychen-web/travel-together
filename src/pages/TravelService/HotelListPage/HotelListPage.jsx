@@ -10,7 +10,7 @@ const HotelListPage = () => {
   const isAllLoading = isLoadingArray.some((singleLoading) => singleLoading);
   return (
     <main className="container">
-      <MyBreadCrumb routes={["飯店查詢"]} />
+      <MyBreadCrumb routes={["住宿查詢"]} />
       <Loader isLoading={isAllLoading} />
       <FilterHotelsForm
         setHotels={setHotels}

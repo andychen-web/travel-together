@@ -3,7 +3,6 @@ import Cookies from "universal-cookie";
 import { notifyError, showToast } from "@/utilities/globalUtil";
 import { apiRefreshToken } from "@/api";
 import router from "@/router";
-import { basePath } from "@/utilities/routeUtil";
 // 自家後端的api
 const travelAxiosInstance = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL,
@@ -67,12 +66,12 @@ async function handleGetApiError(errResponse) {
     const data = errResponse.data;
     switch (status) {
       case 400:
-        notifyError(`參數錯誤： ${data.message}`);
+        notifyError(`無效請求，請確認欄位正確後再試： ${data.message}`);
         break;
       case 401:
         if (apiRetryCount > 0) {
           // 重取失敗
-          // router.navigate(basePath + "/login");
+          // router.navigate( "/login");
           return;
         }
         apiRetryCount += 1;

@@ -51,10 +51,6 @@ export const apiRefreshToken = authApi.refreshToken;
 // section3
 //****************
 function test() {
-  apiLogin({
-    email: "demo@gmail.com",
-    password: "demo",
-  });
   apiGetUserBookings(apiMyBookingParams().myBookingFilter);
 }
-test();
+// test();
