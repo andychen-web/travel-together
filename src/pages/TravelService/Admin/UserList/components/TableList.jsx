@@ -1,7 +1,7 @@
 import {
   apiBlockUserById,
   apiUnblockUserById,
-} from "@/api";
+} from "@/api-client";
 import Pagination from "@/components/Pagination/Pagination.jsx";
 const TableList = ({ users, fetchList }) => {
   // 篩選用戶列表

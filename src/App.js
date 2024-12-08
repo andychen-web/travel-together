@@ -10,18 +10,18 @@ import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "@/context/AuthContext";
 
 function App() {
-  const [isSignedIn, setIsSignedIn] = useState(false); // 管理登入狀態
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // 管理登入狀態
   // token
   useGetTdxToken();
   useEffect(() => {
     const checkSignedIn = async () => {
       // await useGetUserToken();
-      // setIsSignedIn(true);
+      // setIsLoggedIn(true);
     };
     checkSignedIn();
   }, []);
   return (
-    <AuthProvider isSignedIn={false}>
+    <AuthProvider isLoggedIn={false}>
       <NavProvider>
         <ToastContainer />
         <RouterProvider router={router} />

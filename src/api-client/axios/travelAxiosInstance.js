@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
 import { notifyError, showToast } from "@/utilities/globalUtil";
-import { apiRefreshToken } from "@/api";
+import { apiRefreshToken } from "@/api-client";
 import router from "@/router";
 // 自家後端的api
 const travelAxiosInstance = axios.create({
@@ -69,6 +69,7 @@ async function handleGetApiError(errResponse) {
         notifyError(`無效請求，請確認欄位正確後再試： ${data.message}`);
         break;
       case 401:
+        // TODO
         if (apiRetryCount > 0) {
           // 重取失敗
           // router.navigate( "/login");

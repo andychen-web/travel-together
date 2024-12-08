@@ -1,4 +1,4 @@
-import tdxAxiosInstance from "@/api/tdx/tdxAxiosInstance";  
+import tdxAxiosInstance from "@/api-client/tdx/tdxAxiosInstance";  
 
 export const tdxParams = () => {
   // 查詢條件

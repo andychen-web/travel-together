@@ -126,7 +126,7 @@ export const showToast = ({ type, msg }) => {
 };
 
 // 多個loading處理
-export const updateLoadingArrayState = (setLoadingArray, index, value) => {
+export const updateLoadingState = (setLoadingArray, index, value) => {
   setLoadingArray((arr) => {
     const newArr = [...arr];
     newArr[index] = value;

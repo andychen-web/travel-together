@@ -2,9 +2,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import OauthContainer from "./OauthContainer";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { apiLogin } from "@/api";
+import { apiLogin } from "@/api-client";
 import { useTranslation } from "react-i18next";
-
+import router from "@/router";
 const LoginPage = () => {
   // 多語系
   const { t } = useTranslation();
@@ -20,8 +20,7 @@ const LoginPage = () => {
 
   const onSubmit = async (model) => {
     const res = await apiLogin(model);
-    const basePath = location.pathname.split('/').slice(0, -1).join('/'); //最後一個path之前的完整path
-    navigate(basePath + "/rooms");
+    navigate("/travel/rooms");
   };
 
   return (

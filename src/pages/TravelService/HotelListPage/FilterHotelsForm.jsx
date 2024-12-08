@@ -1,94 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { apiGetHotels, apiHotelParams } from "@/api";
-import { updateLoadingArrayState } from "@/utilities/globalUtil";
+import { apiGetHotels, apiHotelParams } from "@/api-client";
+import { updateLoadingState } from "@/utilities/globalUtil";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
-import { Button, ButtonGroup, Container, Row, Col } from "react-bootstrap";
-
-const TravelerButtons = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [travelerCounts, setTravelerCounts] = useState({
-    adults: 2,
-    children: 0,
-    pets: 0,
-  });
-  const buttonStyle = {
-    backgroundColor: "#ffffff",
-    border: "1px solid #ced4da",
-    color: "#495057",
-  };
-  const travelerTypes = [
-    { label: "成人", key: "adults" },
-    { label: "孩童", key: "children" },
-    { label: "寵物", key: "pets" },
-  ];
-  const handleIncrement = (type) => {
-    setTravelerCounts((prevCounts) => ({
-      ...prevCounts,
-      [type]: prevCounts[type] + 1,
-    }));
-  };
-  const handleDecrement = (type) => {
-    setTravelerCounts((prevCounts) => ({
-      ...prevCounts,
-      [type]: prevCounts[type] > 0 ? prevCounts[type] - 1 : 0,
-    }));
-  };
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
-  return (
-    <div>
-      <Button onClick={toggleDropdown} style={{ marginBottom: "10px" }}>
-        人數
-      </Button>
-      {dropdownOpen && (
-        <Container
-          className="p-3"
-          style={{
-            border: "1px solid #ced4da",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-            borderRadius: "5px",
-          }}
-        >
-          <Row className="justify-content-end">
-            <Button variant="light" onClick={() => setDropdownOpen(false)}>
-              &times;
-            </Button>
-          </Row>
-          {travelerTypes.map(({ label, key }) => (
-            <Row key={key} className="mb-3 align-items-center">
-              <Col md="8">{label}</Col>
-              <Col md="4">
-                <ButtonGroup className="d-flex align-items-center">
-                  <Button
-                    style={buttonStyle}
-                    onClick={() => handleDecrement(key)}
-                    disabled={travelerCounts[key] <= 0}
-                  >
-                    -
-                  </Button>
-                  <Button style={buttonStyle} disabled>
-                    {travelerCounts[key]}
-                  </Button>
-                  <Button
-                    style={buttonStyle}
-                    onClick={() => handleIncrement(key)}
-                  >
-                    +
-                  </Button>
-                </ButtonGroup>
-              </Col>
-            </Row>
-          ))}
-        </Container>
-      )}
-    </div>
-  );
-};
-// export default TravelerButtons;
-
+import GuestDropdown from "@/components/Dropdown/GuestDropdown.jsx";
 const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
   const [hotelsFilter, setHotelsFilter] = useState(
     apiHotelParams().hotelsFilter
@@ -105,10 +20,9 @@ const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // 處理多個loading中其中一個的狀態
-    updateLoadingArrayState(setIsLoadingArray, 0, true);
+    updateLoadingState(setIsLoadingArray, 0, true);
     await fetchData();
-    updateLoadingArrayState(setIsLoadingArray, 0, false);
+    updateLoadingState(setIsLoadingArray, 0, false);
   };
 
   useEffect(() => {
@@ -155,7 +69,7 @@ const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
             wrapperClassName="min-w-full"
           />
 
-          <TravelerButtons></TravelerButtons>
+          <GuestDropdown></GuestDropdown>
         </div>
         <button className="btn-custom-primary" type="submit">
           查詢

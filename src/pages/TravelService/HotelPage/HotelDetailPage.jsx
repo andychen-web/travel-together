@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RoomCard from "./Card/RoomCard";
-import { apiGetHotelById } from "@/api";
+import { apiGetHotelById } from "@/api-client";
 import NoSearchResult from "@/components/Search/NoSearchResult.jsx";
 import { useParams } from "react-router-dom";
 

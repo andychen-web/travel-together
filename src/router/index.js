@@ -34,6 +34,31 @@ const ClientLayoutContainer = () => {
   );
 };
 // TODO 後台
+export const userRoutes = [
+  {
+    path: "/user",
+    element: <ClientLayoutContainer />,
+    name: "會員中心",
+    isVisibleOnNav: true,
+    hasDynamicRoutes: true,
+    children: [
+      {
+        path: "login",
+        name: "登入",
+        element: <LoginPage />,
+        isVisibleOnNav: true,
+        isVisibleOnLoggedIn: false,
+      },
+      {
+        path: "signup",
+        name: "註冊",
+        element: <LoginPage />,
+        isVisibleOnNav: true,
+        isVisibleOnLoggedIn: false,
+      },
+    ],
+  },
+];
 
 const router = createBrowserRouter([
   {
@@ -48,6 +73,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  ...userRoutes,
   {
     path: "/test",
     element: <Test></Test>,
@@ -61,6 +87,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
+        isVisibleOnNav: false,
         element: <HomePage />,
       },
       {
@@ -84,21 +111,8 @@ const router = createBrowserRouter([
         ),
         isVisibleOnNav: true,
       },
-      {
-        path: "login",
-        name: "登入",
-        element: <LoginPage />,
-        isVisibleOnNav: true,
-      },
-      {
-        path: "signup",
-        name: "註冊",
-        element: <LoginPage />,
-        isVisibleOnNav: true,
-      },
     ],
   },
-
   {
     path: "/TDX", //台灣旅遊公開資料
     element: <ClientLayoutContainer />,

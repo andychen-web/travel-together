@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useHref, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import { tdxParams } from "@/api/tdx/tdxTourismApi";
+import { tdxParams } from "@/api-client/tdx/tdxTourismApi";
 const Pagination = ({ paginationDetails, paginationStyle = "basic" }) => {
   const navigate = useNavigate();
   const handlePageChange = (page) => {

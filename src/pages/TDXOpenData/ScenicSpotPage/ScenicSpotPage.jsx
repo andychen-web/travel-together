@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { apiGetTdxScenicSpots } from "@/api";
+import { apiGetTdxScenicSpots } from "@/api-client";
 import topic1 from "@/assets/images/category/spot/01.svg";
 import topic2 from "@/assets/images/category/spot/02.svg";
 import topic3 from "@/assets/images/category/spot/03.svg";

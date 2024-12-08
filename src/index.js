@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import "@/utilities/i18n/locales/i18n";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+// TODO
 root.render(<App />);
 /* <React.StrictMode>
     <App />

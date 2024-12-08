@@ -1,4 +1,4 @@
-import travelAxiosInstance from "@/api/common/travelAxiosInstance";
+import travelAxiosInstance from "@/api-client/axios/travelAxiosInstance";
 
 export const usersParams = () => {
   // 查詢條件

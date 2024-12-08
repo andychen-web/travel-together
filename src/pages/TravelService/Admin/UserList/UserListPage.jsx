@@ -1,4 +1,4 @@
-import { apiGetUsers } from "@/api";
+import { apiGetUsers } from "@/api-client";
 
 import NoSearchResult from "@/components/Search/NoSearchResult.jsx";
 const UserListPage = () => {

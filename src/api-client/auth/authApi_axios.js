@@ -1,4 +1,4 @@
-import travelAxiosInstance from "@/api/common/travelAxiosInstance";
+import travelAxiosInstance from "@/api-client/axios/travelAxiosInstance";
 
 export const authParams = () => {
   // 查詢條件
@@ -20,7 +20,10 @@ export async function login(model) {
 }
 export async function validateToken() {
   const url = `/auth/validate-token`;
-  return travelAxiosInstance.get(url, { withCredentials: true });
+  return travelAxiosInstance.get(url, {
+    withCredentials: true,
+    showToast: false,
+  });
 }
 export async function logout() {
   const url = `/auth/logout`;
@@ -28,5 +31,8 @@ export async function logout() {
 }
 export async function refreshToken() {
   const url = `/auth/refresh-token`;
-  return travelAxiosInstance.post(url, null, { withCredentials: true });
+  return travelAxiosInstance.post(url, null, {
+    withCredentials: true,
+    showToast: false,
+  });
 }

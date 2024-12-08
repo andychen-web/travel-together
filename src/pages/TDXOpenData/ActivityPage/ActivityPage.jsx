@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { apiGetTdxActivities } from "@/api";
+import { apiGetTdxActivities } from "@/api-client";
 import topic1 from "@/assets/images/category/activity/01.svg";
 import topic2 from "@/assets/images/category/activity/02.svg";
 import topic3 from "@/assets/images/category/activity/03.svg";

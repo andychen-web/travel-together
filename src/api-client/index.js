@@ -1,12 +1,12 @@
-import * as tempTestApi from "@/api/tempTest";
+import * as tempTestApi from "@/api-client/tempTest";
 
-import * as tdxTourismApi from "@/api/tdx/tdxTourismApi";
+import * as tdxTourismApi from "@/api-client/tdx/tdxTourismApi";
 
-import * as hotelsApi from "@/api/hotels/hotelsApi";
-import * as myBookingApi from "@/api/my-bookings/myBookingApi";
-import * as usersApi from "@/api/users/usersApi";
+import * as hotelsApi from "@/api-client/hotels/hotelsApi";
+import * as myBookingApi from "@/api-client/my-bookings/myBookingApi";
+import * as usersApi from "@/api-client/users/usersApi";
 // ---------Auth---------
-import * as authApi from "@/api/auth/authApi";
+import * as authApi from "@/api-client/auth/authApi";
 
 //**********
 // TDX 服務 API

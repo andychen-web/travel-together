@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useParams } from "react-router-dom";
-import { travelPackagesParams } from "@/api/travel-packages/travelPackages_api";
+import { travelPackagesParams } from "@/api-client/travel-packages/travelPackages_api";
 const { travelPackagesAddModel, travelPackagesEditModel } =
   travelPackagesParams();
 

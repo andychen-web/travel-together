@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { getAccessToken } from "@/api/tdx/auth";
+import { getAccessToken } from "@/api-client/tdx/auth";
 import Cookies from "universal-cookie";
 
 const useGetTdxToken = () => {

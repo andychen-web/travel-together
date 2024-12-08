@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { apiGetTdxRestaurants } from "@/api";
+import { apiGetTdxRestaurants } from "@/api-client";
 import topic1 from "@/assets/images/category/restaurant/01.svg";
 import topic2 from "@/assets/images/category/restaurant/02.svg";
 import topic3 from "@/assets/images/category/restaurant/03.svg";
