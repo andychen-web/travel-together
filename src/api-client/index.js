@@ -1,4 +1,4 @@
-import * as tempTestApi from "@/api-client/tempTest";
+// import * as tempTestApi from "@/api-client/tempTest";
 
 import * as tdxTourismApi from "@/api-client/tdx/tdxTourismApi";
 
@@ -8,17 +8,17 @@ import * as usersApi from "@/api-client/users/usersApi";
 // ---------Auth---------
 import * as authApi from "@/api-client/auth/authApi";
 
-//**********
+//****************
 // TDX 服務 API
-//**********
+//****************
 export const apiGetTdxActivities = tdxTourismApi.getActivities;
 export const apiGetTdxRestaurants = tdxTourismApi.getRestaurants;
 export const apiGetTdxSuggestions = tdxTourismApi.getSuggestions;
 export const apiGetTdxScenicSpots = tdxTourismApi.getScenicSpots;
 
-//********************
+//****************
 // 飯店
-//********************
+//****************
 export const apiHotelParams = hotelsApi.hotelsParams;
 export const apiGetHotels = hotelsApi.getHotels;
 export const apiGetHotelById = hotelsApi.getHotelById;
@@ -28,9 +28,9 @@ export const apiGetHotelById = hotelsApi.getHotelById;
 export const apiMyBookingParams = myBookingApi.myBookingParams;
 export const apiGetUserBookings = myBookingApi.getUserBookings;
 
-//********************
+//****************
 // 使用者
-//********************
+//****************
 export const apiGetUsers = usersApi.getUsers;
 export const apiGetUserById = usersApi.getUserById;
 export const apiBlockUserById = usersApi.blockUserById;
