@@ -60,55 +60,58 @@ const Navigation = () => {
   const handleLogoClick = () => {
     navigate("/");
   };
+  window.isTest = true;
   return (
-    <Navbar
-      collapseOnSelect
-      expand="sm"
-      bg="light"
-      data-bs-theme="light"
-      style={{ width: "100vw", top: 0, maxHeight: "80px" }}
-      className="position-fixed px-5 custom-nav z-3"
-    >
-      <img width={"170px"} src={Logo} alt="logo" onClick={handleLogoClick} />
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse
-        id="responsive-navbar-nav"
-        className="justify-content-end"
+    !window.isTest && (
+      <Navbar
+        collapseOnSelect
+        expand="sm"
+        bg="light"
+        data-bs-theme="light"
+        style={{ width: "100vw", top: 0, maxHeight: "80px" }}
+        className="position-fixed px-5 custom-nav z-3"
       >
-        <Nav>
-          {/* 會員中心 */}
-          {userLinks.map((route, index) => (
-            <NavDropdown key={index} title={route.name}>
-              {route.children?.map((child) => (
-                <NavDropdown.Item
-                  key={child.path}
-                  as={Link}
-                  to={route.path + "/" + child.path}
-                  href={route.path + "/" + child.path}
-                >
-                  {child.name}
-                </NavDropdown.Item>
-              ))}
-            </NavDropdown>
-          ))}
-          {/* 其他路由 */}
-          {links.map((route, index) => (
-            <NavDropdown key={index} title={route.parent.name}>
-              {route.parent.children?.map((child) => (
-                <NavDropdown.Item
-                  key={child.path}
-                  as={Link}
-                  to={route.parent.path + "/" + child.path}
-                  href={route.parent.path + "/" + child.path}
-                >
-                  {child.name}
-                </NavDropdown.Item>
-              ))}
-            </NavDropdown>
-          ))}
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+        <img width={"170px"} src={Logo} alt="logo" onClick={handleLogoClick} />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse
+          id="responsive-navbar-nav"
+          className="justify-content-end"
+        >
+          <Nav>
+            {/* 會員中心 */}
+            {userLinks.map((route, index) => (
+              <NavDropdown key={index} title={route.name}>
+                {route.children?.map((child) => (
+                  <NavDropdown.Item
+                    key={child.path}
+                    as={Link}
+                    to={route.path + "/" + child.path}
+                    href={route.path + "/" + child.path}
+                  >
+                    {child.name}
+                  </NavDropdown.Item>
+                ))}
+              </NavDropdown>
+            ))}
+            {/* 其他路由 */}
+            {links.map((route, index) => (
+              <NavDropdown key={index} title={route.parent.name}>
+                {route.parent.children?.map((child) => (
+                  <NavDropdown.Item
+                    key={child.path}
+                    as={Link}
+                    to={route.parent.path + "/" + child.path}
+                    href={route.parent.path + "/" + child.path}
+                  >
+                    {child.name}
+                  </NavDropdown.Item>
+                ))}
+              </NavDropdown>
+            ))}
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    )
   );
 };
 
