@@ -9,7 +9,12 @@ import { NavProvider } from "@/context/NavContext";
 import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "@/context/AuthContext";
 
+
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { zhTW } from "date-fns/locale";
 function App() {
+  let locale = zhTW;
   const [isLoggedIn, setIsLoggedIn] = useState(false); // 管理登入狀態
   // token
   useGetTdxToken();
@@ -24,7 +29,12 @@ function App() {
     <AuthProvider isLoggedIn={false}>
       <NavProvider>
         <ToastContainer />
-        <RouterProvider router={router} />
+        <LocalizationProvider
+          dateAdapter={AdapterDateFns}
+          adapterLocale={locale}
+        >
+          <RouterProvider router={router} />
+        </LocalizationProvider>
       </NavProvider>
     </AuthProvider>
   );

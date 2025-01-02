@@ -3,13 +3,24 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "@/utilities/i18n/locales/i18n";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material"; // 跨瀏覽器統一樣式
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#7f977b", 
+    },
+  },
+});
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// TODO
-root.render(<App />);
-/* <React.StrictMode>
+root.render(
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
     <App />
-  </React.StrictMode> */
+  </ThemeProvider>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

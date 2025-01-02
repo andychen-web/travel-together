@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { apiGetHotels, apiHotelParams } from "@/api-client";
 import { updateLoadingState } from "@/utilities/globalUtil";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+// MUI
+import { TextField } from "@mui/material";
+import { DatePicker } from "@mui/x-date-pickers";
+
 import GuestDropdown from "@/components/Dropdown/GuestDropdown.jsx";
 const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
   const [hotelsFilter, setHotelsFilter] = useState(
     apiHotelParams().hotelsFilter
   );
+  const [selectedDate, setSelectedDate] = useState(null);
   const [checkIn, setCheckIn] = useState(hotelsFilter.checkIn);
   const [checkOut, setCheckOut] = useState(hotelsFilter.checkOut);
   const minDate = new Date();
@@ -41,11 +44,23 @@ const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
             onChange={(e) =>
               setHotelsFilter({ ...hotelsFilter, cityCode: e.target.value })
             }
-          >
-            {/*  */}
-          </select>
+          ></select>
           <DatePicker
+            label="入住日"
+            value={selectedDate}
+            onChange={(date) => setCheckIn(date)}
+            renderInput={(params) => <TextField {...params} />}
+          />
+          <DatePicker
+            label="退房日"
+            value={selectedDate}
+            onChange={(date) => setCheckOut(date)}
+            renderInput={(params) => <TextField {...params} />}
+          />
+
+          {/* <DatePicker
             placeholderText="入住"
+            locale="zh-TW"
             selected={checkIn}
             selectsStart
             onChange={(date) => setCheckIn(date)}
@@ -58,6 +73,7 @@ const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
           />
           <DatePicker
             placeholderText="退房"
+            locale="zh-TW"
             selected={checkOut}
             selectsStart
             onChange={(date) => setCheckOut(date)}
@@ -67,7 +83,7 @@ const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
             maxDate={maxDate}
             className="min-w-full bg-white p-2 focus:outline-none"
             wrapperClassName="min-w-full"
-          />
+          /> */}
 
           <GuestDropdown></GuestDropdown>
         </div>
