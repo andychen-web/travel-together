@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
       if(!res) return;
       res.userId ? setIsLoggedIn(true) : setIsLoggedIn(false);
     };
-    validateToken();
+    // validateToken();
   }, []);
   return (
     <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
