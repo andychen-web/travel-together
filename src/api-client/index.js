@@ -8,6 +8,8 @@ import * as usersApi from "@/api-client/users/usersApi";
 // ---------Auth---------
 import * as authApi from "@/api-client/auth/authApi";
 
+// ---------Location-----
+import * as locationApi from "@/api-client/location/locationApi";
 //****************
 // TDX 服務 API
 //****************
@@ -48,8 +50,10 @@ export const apiRefreshToken = authApi.refreshToken;
 //****************
 
 //****************
-// section3
+// 地點資訊
 //****************
+export const apiGetAllTWCities = locationApi.getAllTWCities;
+
 function test() {
   apiGetUserBookings(apiMyBookingParams().myBookingFilter);
 }

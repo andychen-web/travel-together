@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { apiGetHotels, apiHotelParams } from "@/api-client";
+import {
+  apiGetHotels,
+  apiHotelParams,
+  apiGetAllTWCities,
+} from "@/api-client";
 import { updateLoadingState } from "@/utilities/globalUtil";
 // MUI
 import { TextField } from "@mui/material";
@@ -10,15 +14,20 @@ const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
   const [hotelsFilter, setHotelsFilter] = useState(
     apiHotelParams().hotelsFilter
   );
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [cities, setCities] = useState([]);
   const [checkIn, setCheckIn] = useState(hotelsFilter.checkIn);
   const [checkOut, setCheckOut] = useState(hotelsFilter.checkOut);
   const minDate = new Date();
-  const maxDate = new Date();
+  let maxDate = new Date(minDate);
+  maxDate = new Date(maxDate.setFullYear(minDate.getFullYear() + 1));
 
   const fetchData = async () => {
     const data = await apiGetHotels(hotelsFilter);
     setHotels(data);
+  };
+  const fetchFilterOptions = async () => {
+    const data = await apiGetAllTWCities();
+    setCities(data);
   };
 
   const handleSubmit = async (e) => {
@@ -30,6 +39,7 @@ const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
 
   useEffect(() => {
     fetchData();
+    fetchFilterOptions();
   }, []);
   return (
     <div>
@@ -47,42 +57,26 @@ const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
           ></select>
           <DatePicker
             label="入住日"
-            value={selectedDate}
+            value={checkIn}
             onChange={(date) => setCheckIn(date)}
+            format="yyyy-MM-dd"
             renderInput={(params) => <TextField {...params} />}
+            minDate={minDate}
+            maxDate={maxDate}
           />
           <DatePicker
             label="退房日"
-            value={selectedDate}
+            value={checkOut}
             onChange={(date) => setCheckOut(date)}
+            format="yyyy-MM-dd"
             renderInput={(params) => <TextField {...params} />}
+            minDate={minDate}
+            maxDate={maxDate}
           />
 
           {/* <DatePicker
-            placeholderText="入住"
-            locale="zh-TW"
-            selected={checkIn}
-            selectsStart
-            onChange={(date) => setCheckIn(date)}
-            startDate={checkIn}
-            endDate={checkOut}
             minDate={minDate}
             maxDate={maxDate}
-            className="min-w-full bg-white p-2 focus:outline-none"
-            wrapperClassName="min-w-full"
-          />
-          <DatePicker
-            placeholderText="退房"
-            locale="zh-TW"
-            selected={checkOut}
-            selectsStart
-            onChange={(date) => setCheckOut(date)}
-            startDate={checkIn}
-            endDate={checkOut}
-            minDate={minDate}
-            maxDate={maxDate}
-            className="min-w-full bg-white p-2 focus:outline-none"
-            wrapperClassName="min-w-full"
           /> */}
 
           <GuestDropdown></GuestDropdown>
