@@ -34,7 +34,7 @@ const defaultToastTextMap = {
 travelAxiosInstance.interceptors.response.use(
   (response) => {
     // 處理通知訊息
-    const {config} = response;
+    const { config } = response;
     if (config.showToast === false) return response.data;
     if (config.method === "get") return response.data;
     // 除GET以外的操作都顯示toast
@@ -64,6 +64,10 @@ async function handleGetApiError(errResponse) {
   try {
     const status = errResponse.status;
     const data = errResponse.data;
+    if (errResponse.code === "ERR_NETWORK") {
+      notifyError(`後台無回應，請稍後再試`);
+      return false;
+    }
     switch (status) {
       case 400:
         notifyError(`無效請求，請確認欄位正確後再試： ${data.message}`);

@@ -28,10 +28,6 @@ const ArticleList = () => {
       });
   }, []);
   const { page } = useParams();
-  useEffect(() => {
-    // TODO
-    console.log("page", page);
-  }, [page]);
 
   return (
     <main className="container px-5 pt-4">

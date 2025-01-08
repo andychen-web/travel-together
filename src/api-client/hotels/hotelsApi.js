@@ -2,7 +2,11 @@ import travelAxiosInstance from "@/api-client/axios/travelAxiosInstance";
 
 export const hotelsParams = () => {
   // 查詢條件
-  const hotelsFilter = {};
+  const hotelsFilter = {
+    checkIn: null,
+    checkOut: null,
+    city: "",
+  };
 
   const hotelsAddModel = {};
   const hotelsEditModel = {};

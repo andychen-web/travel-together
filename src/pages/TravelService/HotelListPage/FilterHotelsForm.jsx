@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
-import {
-  apiGetHotels,
-  apiHotelParams,
-  apiGetAllTWCities,
-} from "@/api-client";
+import { apiGetHotels, apiHotelParams } from "@/api-client";
 import { updateLoadingState } from "@/utilities/globalUtil";
 // MUI
 import { TextField } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 
 import GuestDropdown from "@/components/Dropdown/GuestDropdown.jsx";
+import SingleSelect from "@/components/Select/SingleSelect";
 const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
   const [hotelsFilter, setHotelsFilter] = useState(
     apiHotelParams().hotelsFilter
   );
-  const [cities, setCities] = useState([]);
   const [checkIn, setCheckIn] = useState(hotelsFilter.checkIn);
   const [checkOut, setCheckOut] = useState(hotelsFilter.checkOut);
   const minDate = new Date();
@@ -25,10 +21,6 @@ const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
     const data = await apiGetHotels(hotelsFilter);
     setHotels(data);
   };
-  const fetchFilterOptions = async () => {
-    const data = await apiGetAllTWCities();
-    setCities(data);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,23 +30,18 @@ const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
   };
 
   useEffect(() => {
-    fetchData();
-    fetchFilterOptions();
+    // TODO
+    // fetchData();
   }, []);
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="cityCode">地點</label>
-          {/* // TODO */}
-          <select
-            className="form-select"
-            id="cityCode"
-            value={hotelsFilter.cityCode}
-            onChange={(e) =>
-              setHotelsFilter({ ...hotelsFilter, cityCode: e.target.value })
-            }
-          ></select>
+          <SingleSelect
+            options={{ type: "twCities" }}
+            val={hotelsFilter.city}
+            setVal={(city) => setHotelsFilter((prev) => ({ ...prev, city }))}
+          />
           <DatePicker
             label="入住日"
             value={checkIn}
@@ -73,11 +60,6 @@ const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
             minDate={minDate}
             maxDate={maxDate}
           />
-
-          {/* <DatePicker
-            minDate={minDate}
-            maxDate={maxDate}
-          /> */}
 
           <GuestDropdown></GuestDropdown>
         </div>
