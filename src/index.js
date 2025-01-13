@@ -8,7 +8,11 @@ import { CssBaseline } from "@mui/material"; // 跨瀏覽器統一樣式
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#7f977b", 
+      main: "#7f977b",
+    },
+    secondary: {
+      main: "#eb4334", 
+      contrastText: "#ffffff", 
     },
   },
 });

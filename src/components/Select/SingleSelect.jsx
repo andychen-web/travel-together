@@ -1,7 +1,7 @@
 import React from "react";
 import { CITIES } from "@/utilities/data";
 import { InputLabel, FormControl, NativeSelect } from "@mui/material";
-const SingleSelect = ({ options, val, setVal }) => {
+const SingleSelect = ({ label, options, val, setVal }) => {
   // TODO setVal
   let optionsData = [];
   if (options.type === "twCities") {
@@ -12,7 +12,7 @@ const SingleSelect = ({ options, val, setVal }) => {
   return (
     <FormControl>
       <InputLabel variant="standard" htmlFor="uncontrolled-native">
-        Age
+        {label}
       </InputLabel>
       <NativeSelect
         defaultValue={val || ""}

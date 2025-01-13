@@ -38,6 +38,7 @@ const FilterHotelsForm = ({ setHotels, setIsLoadingArray }) => {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <SingleSelect
+            label={''}
             options={{ type: "twCities" }}
             val={hotelsFilter.city}
             setVal={(city) => setHotelsFilter((prev) => ({ ...prev, city }))}
