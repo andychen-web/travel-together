@@ -126,7 +126,7 @@ export const showToast = ({ type, msg }) => {
 };
 
 // 多個loading處理
-export const updateLoadingArrayState = (setLoadingArray, index, value) => {
+export const updateLoadingState = (setLoadingArray, index, value) => {
   setLoadingArray((arr) => {
     const newArr = [...arr];
     newArr[index] = value;
@@ -139,8 +139,8 @@ export const updateLoadingArrayState = (setLoadingArray, index, value) => {
 export function openNewWindow(path) {
   // 若Public Path有改
   // const newWindow = window.open(
-  //   process.env.NODE_ENV === "production"
-  //     ? process.env.REACT_APP_PRODUCTION_PUBLIC_PATH + path
+  //   import.meta.env.NODE_ENV === "production"
+  //     ? import.meta.env.REACT_APP_PRODUCTION_PUBLIC_PATH + path
   //     : path,
   //   "_blank"
   // );

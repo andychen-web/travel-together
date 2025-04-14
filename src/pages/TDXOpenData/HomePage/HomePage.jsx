@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Carousel from "./Carousel/Carousel.jsx";
-import { apiGetTdxRestaurants, apiGetTdxScenicSpots } from "@/api";
+import { apiGetTdxRestaurants, apiGetTdxScenicSpots } from "@/api-client";
 import Header from "./Header/Header.jsx";
 import ActivityList from "./RecentActivity/ActivityList.jsx";
 import ScenicSpotList from "./ScenicSpot/ScenicSpotList.jsx";
 import RestaurantList from "./Restaurant/RestaurantList.jsx";
 import SearchTitle from "./SearchTitle/SearchTitle.jsx";
 import Cookies from "universal-cookie";
-import { getAccessToken } from "@/api/tdx/auth";
+import { getAccessToken } from "@/api-client/tdx/auth";
 import Loader from "@/components/Loader.jsx";
 import { useNavigate } from "react-router-dom";
-import { basePath } from "@/utilities/data";
 const HomePage = () => {
   const [scenicSpots, setScenicSpots] = useState([]);
   const [carouselItems, setCarouselItems] = useState([]);
@@ -42,7 +41,7 @@ const HomePage = () => {
       getAccessToken().then((res) => setAccessToken(res));
       setIsLoading(true);
     }
-    navigate(basePath);
+    navigate('/');
   }, [accessToken]);
   return (
     <main className="container">

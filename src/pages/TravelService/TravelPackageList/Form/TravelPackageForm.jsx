@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useParams } from "react-router-dom";
-import { travelPackagesParameters } from "@/api/travel-packages/travelPackages_api";
+import { travelPackagesParams } from "@/api-client/travel-packages/travelPackages_api";
 const { travelPackagesAddModel, travelPackagesEditModel } =
-  travelPackagesParameters();
+  travelPackagesParams();
 
 const travelPackageSchema = z.object({
   name: z.string().min(1, "姓名為必填項目"),

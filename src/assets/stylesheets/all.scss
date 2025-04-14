@@ -1,11 +1,13 @@
-@import "~bootstrap/scss/functions";
-@import "./utilities/_variables.scss"; // 修改過的bootstrap variables
-@import "~bootstrap/scss/bootstrap";
+@import "node_modules/bootstrap/scss/functions";
+@import "./utilities/variables"; // 修改過的bootstrap variables
+@import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/bootstrap/scss/mixins/breakpoints";
 
 // 客製樣式
-
-// 此處import partial檔案需要編譯 不須加底線"_"
+@import "./base/typography";
+@import "./base/base";
+@import "./components/index"; // 組件
+@import "./utilities/size";
 
 @import "./base/typography.scss";
 @import "./base/base.scss";

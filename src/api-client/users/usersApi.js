@@ -1,6 +1,6 @@
-import commonAxiosInstance from "@/api/common/commonAxiosInstance";
+import travelAxiosInstance from "@/api-client/axios/travelAxiosInstance";
 
-export const usersParameters = () => {
+export const usersParams = () => {
   // 查詢條件
   const usersFilter = {};
 
@@ -17,21 +17,20 @@ export const usersParameters = () => {
 
 export async function getUsers(filter) {
   const url = `/users/list`;
-  return commonAxiosInstance.get(url, {
+  return travelAxiosInstance.get(url, {
     params: filter,
-    toastText: "使用者",
   });
 }
 export async function getUserById(id) {
   const url = `/users/${id}`;
-  return commonAxiosInstance.get(url);
+  return travelAxiosInstance.get(url);
 }
 
 export async function blockUserById(id) {
   const url = `/users/${id}/block`;
-  return commonAxiosInstance.delete(url);
+  return travelAxiosInstance.delete(url);
 }
 export async function unblockUserById(id) {
   const url = `/users/${id}/unblock`;
-  return commonAxiosInstance.put(url);
+  return travelAxiosInstance.put(url);
 }

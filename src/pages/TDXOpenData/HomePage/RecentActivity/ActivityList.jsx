@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { apiGetTdxActivities } from "@/api";
+import { apiGetTdxActivities } from "@/api-client";
 
 import ActivityCard from "./ActivityCard";
 import Card from "@/components/Card.jsx";

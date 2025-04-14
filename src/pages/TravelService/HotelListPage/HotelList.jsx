@@ -1,5 +1,5 @@
 import React from "react";
-import LatestDestinationCard from "./Card/LatestDestinationCard";
+import LatestDestinationCard from "./components/Card/LatestDestinationCard";
 import NoSearchResult from "@/components/Search/NoSearchResult.jsx";
 const HotelList = ({ hotels }) => {
   return (

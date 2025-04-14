@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useHref, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import { tdxParameters } from "@/api/tdx/tdxTourism_api";
+import { tdxParams } from "@/api-client/tdx/tdxTourismApi";
 const Pagination = ({ paginationDetails, paginationStyle = "basic" }) => {
   const navigate = useNavigate();
   const handlePageChange = (page) => {
@@ -15,7 +15,7 @@ const Pagination = ({ paginationDetails, paginationStyle = "basic" }) => {
   // tdxPagination
   //****************
   const [pageCount, setPageCount] = useState(
-    tdxParameters().tdxFilterCreator().$top
+    tdxParams().tdxFilterCreator().$top
   ); // 預設值
 
   const handlePageCountChange = (event) => {

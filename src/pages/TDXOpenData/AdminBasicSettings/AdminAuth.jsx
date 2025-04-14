@@ -19,7 +19,7 @@ const AdminAuth = () => {
   const adminSignIn = () => {
     setIsLoading(true);
     axios
-      .post(`${process.env.REACT_APP_AUTH_API}/admin/signin`, {
+      .post(`${import.meta.env.VITE_AUTH_API}/admin/signin`, {
         username: email,
         password,
       })
@@ -40,7 +40,7 @@ const AdminAuth = () => {
   };
   const authorizeAdmin = (token) => {
     axios
-      .post(`${process.env.REACT_APP_AUTH_API}/api/user/check`, {
+      .post(`${import.meta.env.VITE_AUTH_API}/api/user/check`, {
         headers: { Authorization: token },
       })
       .then((res) => {

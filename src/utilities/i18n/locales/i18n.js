@@ -26,6 +26,10 @@ i18n
     interpolation: {
       escapeValue: false, // react already safes from xss
     },
+    detection: {
+      order: ['cookie', 'localStorage', 'navigator'],
+      caches: ['cookie']
+    },
   });
 
 export default i18n;

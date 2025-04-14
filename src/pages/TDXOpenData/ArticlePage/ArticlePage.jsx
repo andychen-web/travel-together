@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ArticleCard from "./Card/ArticleCard.jsx";
 import axios from "axios";
 
-const baseUrl = process.env.REACT_APP_CUSTOM_API;
+const baseUrl = import.meta.env.REACT_APP_CUSTOM_API;
 
 const ArticlePage = () => {
   const { id } = useParams();

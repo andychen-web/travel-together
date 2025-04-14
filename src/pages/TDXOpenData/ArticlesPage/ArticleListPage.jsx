@@ -6,7 +6,7 @@ import Loader from "@/components/Loader";
 import Pagination from "@/components/Pagination/Pagination";
 import { useParams } from "react-router-dom";
 
-const baseUrl = process.env.REACT_APP_CUSTOM_API;
+const baseUrl = import.meta.env.VITE_CUSTOM_API;
 const getArticles = () => {
   axios.get(`${baseUrl}/articles`);
 };
@@ -28,10 +28,6 @@ const ArticleList = () => {
       });
   }, []);
   const { page } = useParams();
-  useEffect(() => {
-    // TODO
-    console.log("page", page);
-  }, [page]);
 
   return (
     <main className="container px-5 pt-4">

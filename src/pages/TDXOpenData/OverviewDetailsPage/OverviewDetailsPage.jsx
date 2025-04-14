@@ -12,7 +12,7 @@ import {
   apiGetTdxRestaurants,
   apiGetTdxSuggestions,
   apiGetTdxScenicSpots,
-} from "@/api";
+} from "@/api-client";
 import { CITIES } from "../../../utilities/data.js";
 import { NavContext } from "@/context/NavContext";
 const OverviewDetailsPage = () => {

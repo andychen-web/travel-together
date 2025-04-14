@@ -2,14 +2,25 @@ import React, { useContext, useState } from "react";
 import { MdSearch } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { NavContext } from "@/context/NavContext";
+
 const HomePageSearch = () => {
   const navigate = useNavigate();
   const [homeSearchInput, setHomeSearchInput] = useState("");
   const { navLinks } = useContext(NavContext);
-  const tdxRoutes = navLinks.filter((item) => {
-    return item && item.path.includes("TDX");
-  });
-  const [searchRoute, setSearchRoute] = useState(tdxRoutes[0].path);
+  
+  // Filter routes that should be searchable
+  const searchableRoutes = navLinks?.filter((item) => {
+    return item && item.path && (
+      item.path.includes("/scenicSpot") ||
+      item.path.includes("/restaurant") ||
+      item.path.includes("/activity")
+    );
+  }) || [];
+
+  // Set default route or first available route
+  const [searchRoute, setSearchRoute] = useState(
+    searchableRoutes.length > 0 ? searchableRoutes[0].path : "/scenicSpot"
+  );
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -17,14 +28,16 @@ const HomePageSearch = () => {
       `${searchRoute}?searchInput=${homeSearchInput ? homeSearchInput : ""}`
     );
   };
+
   return (
     <>
       <select
         className="form-select form-select-md border border-secondary"
         aria-label="form-select"
         onChange={(e) => setSearchRoute(e.target.value)}
+        value={searchRoute}
       >
-        {tdxRoutes.map((route, index) => (
+        {searchableRoutes.map((route, index) => (
           <option key={index} value={route.path}>
             {route.name}
           </option>

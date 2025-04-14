@@ -1,4 +1,4 @@
-import { apiGetAccessToken } from "@/api";
+import { apiGetAccessToken } from "@/api-client";
 import Cookies from "universal-cookie";
 import { notifyError } from "@/utilities/globalUtil";
 export const useGetUserToken = async () => {

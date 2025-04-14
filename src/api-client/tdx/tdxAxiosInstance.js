@@ -45,7 +45,7 @@ function handleGetApiError(response) {
     const data = response.data;
     switch (status) {
       case 400:
-        notifyError(`參數錯誤： ${data.message}`);
+        notifyError(`無效請求，請確認欄位正確後再試： ${data.message}`);
         break;
       case 401:
         notifyError(`權限不足： ${data.message}`);

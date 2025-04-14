@@ -1,15 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import OauthContainer from "./OauthContainer";
-import { Link, useNavigate } from "react-router-dom";
-
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { apiLogin } from "@/api-client";
 import { useTranslation } from "react-i18next";
-
+import router from "@/router";
 const LoginPage = () => {
   // 多語系
   const { t } = useTranslation();
   // 路由
   const navigate = useNavigate();
+  const location = useLocation();
 
   const {
     register,
@@ -17,8 +18,11 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (model) => {
+    const res = await apiLogin(model);
+    console.log(res);
+   console.log(apiLogin);
+    navigate("/travel/rooms");
   };
 
   return (
@@ -47,9 +51,9 @@ const LoginPage = () => {
                 {...register("password", {
                   required: "This field is required",
                   minLength: {
-                    value: 6,
-                    message: t("login.passwordLengthErr",{
-                      count: 6,
+                    value: 4,
+                    message: t("login.passwordLengthErr", {
+                      count: 4,
                     }),
                   },
                 })}
@@ -60,7 +64,6 @@ const LoginPage = () => {
               {errors.password && (
                 <span className="text-danger">{errors.password.message}</span>
               )}
-
             </div>
             {/* <div className="form-check">
               <input

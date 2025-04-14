@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ArticleCard from "../ArticlePage/Card/ArticleCard";
 import { useNavigate } from "react-router-dom";
 import Loader from "@/components/Loader";
-const baseUrl = `${process.env.REACT_APP_CUSTOM_API}/admin`;
+const baseUrl = `${import.meta.env.REACT_APP_CUSTOM_API}/admin`;
 const AdminArticles = () => {
   const [isLoading, setIsLoading] = useState(false);
   const cookies = new Cookies();

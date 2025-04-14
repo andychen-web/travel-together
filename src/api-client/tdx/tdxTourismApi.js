@@ -1,6 +1,6 @@
-import tdxAxiosInstance from "@/api/tdx/tdxAxiosInstance";  
+import tdxAxiosInstance from "@/api-client/tdx/tdxAxiosInstance";  
 
-export const tdxParameters = () => {
+export const tdxParams = () => {
   // 查詢條件
   /**
    * @param {Object} options - 過濾器選項。
@@ -39,7 +39,7 @@ export const getScenicSpots = async ({
   id,
   top = 70,
 }) => {
-  let filterParams = tdxParameters().tdxFilterCreator();
+  let filterParams = tdxParams().tdxFilterCreator();
   if (category) {
     filterParams.$filter += ` and Class1 eq '${category}'`;
   }
@@ -66,7 +66,7 @@ export const getActivities = async ({
   id,
   top = 70,
 }) => {
-  let filterParams = tdxParameters().tdxFilterCreator();
+  let filterParams = tdxParams().tdxFilterCreator();
   filterParams.$filter += category
     ? ` and (Class1 eq '${category}' or Class2 eq '${category}')`
     : "";
@@ -91,7 +91,7 @@ export const getRestaurants = async ({
   id,
   top = 70,
 }) => {
-  let filterParams = tdxParameters().tdxFilterCreator();
+  let filterParams = tdxParams().tdxFilterCreator();
   filterParams.$filter += category ? ` and Class eq '${category}'` : "";
   filterParams.$filter += searchInput
     ? ` and (indexOf(RestaurantName, '${searchInput}') gt -1 or indexOf(Description, '${searchInput}') gt -1)`
@@ -105,7 +105,7 @@ export const getRestaurants = async ({
 };
 // 取得推薦清單
 export const getSuggestions = async ({ id, dataType, city, top = 70 }) => {
-  let filterParams = tdxParameters().tdxFilterCreator();
+  let filterParams = tdxParams().tdxFilterCreator();
   filterParams.$filter += city ? ` and ${dataType}ID ne '${id}'` : "";
   filterParams.$top = top;
   return tdxAxiosInstance.get(`/${dataType}/${city ? city : ""}`, {

@@ -1,7 +1,3 @@
-//****************
-// 路由
-//****************
-export const basePath = "/" + navigator.language.toLowerCase();
 
 //****************
 // TDX
